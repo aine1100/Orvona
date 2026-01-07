@@ -78,7 +78,8 @@ export default function PortfolioSection() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="relative flex-shrink-0 w-[85vw] md:w-[45vw] lg:w-[40vw] aspect-[4/3] group overflow-hidden snap-center rounded-sm"
+              data-cursor="drag"
+              className="relative flex-shrink-0 w-full md:w-[500px] aspect-[4/3] group overflow-hidden snap-center rounded-sm cursor-none"
             >
               {/* Main Image */}
               <Image
@@ -98,7 +99,7 @@ export default function PortfolioSection() {
 
               {/* Content Overlay */}
               <div className="absolute inset-x-0 bottom-0 p-8 md:p-12 flex flex-col items-center text-center transition-all duration-500">
-                <h3 className="text-xl md:text-2xl lg:text-3xl font-medium tracking-tight mb-2 group-hover:mb-6 transition-all duration-500">
+                <h3 className="text-xl  font-medium tracking-tight mb-2 group-hover:mb-6 transition-all duration-500">
                   {project.title}
                 </h3>
 

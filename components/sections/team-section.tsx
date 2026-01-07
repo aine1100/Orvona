@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { cn } from "@/lib/cn";
-import { Linkedin, Twitter, Instagram } from "lucide-react";
+import Link from "next/link";
 
 // 1. Define the data type
 type TeamMember = {
@@ -10,147 +9,124 @@ type TeamMember = {
   name: string;
   role: string;
   image: string;
-  bio: string;
-  socials: {
-    linkedin?: string;
-    twitter?: string;
-    instagram?: string;
-  };
 };
 
-// 2. Create the data array (Mapping source)
+// 2. Create the data array
 const teamMembers: TeamMember[] = [
   {
     id: 1,
-    name: "Alex Morgan",
-    role: "Lead Architect",
+    name: "James Dan",
+    role: "Project Manager",
     image: "/about-villa.png", 
-    bio: "Visionary architect with 15+ years of experience in sustainable luxury design.",
-    socials: {
-      linkedin: "#",
-      twitter: "#",
-    },
   },
   {
     id: 2,
     name: "Sarah Chen",
     role: "Interior Director",
-    image: "/villa3.webp",
-    bio: "Award-winning interior designer specializing in minimalist aesthetics.",
-    socials: {
-      instagram: "#",
-      linkedin: "#",
-    },
+    image: "/about-villa.png",
   },
   {
     id: 3,
     name: "Marcus Reynolds",
-    role: "Project Manager",
-    image: "/villa2.jpg",
-    bio: "Ensuring every project is delivered on time with impeccable quality.",
-    socials: {
-      twitter: "#",
-    },
+    role: "Lead Architect",
+    image: "/about-villa.png",
   },
   {
     id: 4,
     name: "Elena Rodriguez",
     role: "Lighting Specialist",
-    image: "/hero-bg.png", // Fallback image for demo
-    bio: "Creating atmosphere and mood through innovative lighting solutions.",
-    socials: {
-      instagram: "#",
-      linkedin: "#",
-    },
+    image: "/about-villa.png",
+  },
+  {
+    id: 5,
+    name: "David Kim",
+    role: "3D Visualizer",
+    image: "/about-villa.png",
   },
 ];
 
-// 3. Create the sub-component (Modulation)
-function TeamMemberCard({ member }: { member: TeamMember }) {
-  return (
-    <div className="group relative overflow-hidden rounded-md bg-surface border border-white/5 transition-all duration-500 ">
-      {/* Image Container */}
-      <div className="relative aspect-[3/4] overflow-hidden grayscale transition-all duration-500 group-hover:grayscale-0">
-        <Image
-          src={member.image}
-          alt={member.name}
-          fill
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
-        />
-        
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-60" />
-        
-        {/* Socials - Slide in */}
-        <div className="absolute right-4 top-4 translate-x-12 flex flex-col gap-3 transition-transform duration-500 group-hover:translate-x-0">
-          {member.socials.linkedin && (
-             <a href={member.socials.linkedin} className="p-2 rounded-full bg-white/10 hover:bg-primary hover:text-black text-white transition-colors">
-               <Linkedin className="w-4 h-4" />
-             </a>
-          )}
-          {member.socials.twitter && (
-             <a href={member.socials.twitter} className="p-2 rounded-full bg-white/10 hover:bg-primary hover:text-black text-white transition-colors">
-               <Twitter className="w-4 h-4" />
-             </a>
-          )}
-          {member.socials.instagram && (
-             <a href={member.socials.instagram} className="p-2 rounded-full bg-white/10 hover:bg-primary hover:text-black text-white transition-colors">
-               <Instagram className="w-4 h-4" />
-             </a>
-          )}
-        </div>
-      </div>
-
-      {/* Info */}
-      <div className="absolute bottom-0 left-0 w-full p-6 translate-y-2 transition-transform duration-500 group-hover:translate-y-0">
-        <span className="mb-2 block text-xs font-medium tracking-widest text-primary uppercase">
-          {member.role}
-        </span>
-        <h3 className="mb-1 text-2xl font-medium text-white">
-          {member.name}
-        </h3>
-        <div className="h-0 overflow-hidden opacity-0 transition-all duration-500 group-hover:h-auto group-hover:opacity-100 group-hover:mt-2">
-            <p className="text-sm text-muted">
-                {member.bio}
-            </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// 4. Main Section Component
 export default function TeamSection() {
   return (
-    <section className="py-24 lg:py-32 bg-[#202020] relative overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-6 sm:px-12 md:px-16 lg:px-24">
+    <section className="py-24 lg:py-40 bg-[#121212] relative overflow-hidden text-white">
+      
+      {/* Decorative Top Line */}
+      <div className="absolute top-0 left-0 w-full h-px bg-white/[0.03]" />
+
+      <div className="max-w-[1600px] mx-auto px-6 sm:px-12 md:px-16 lg:px-24">
         
-        {/* Header */}
-        <div className="flex items-center gap-6 mb-16 lg:mb-24">
+        {/* Header Layout */}
+        <div className="flex items-center gap-6 mb-24">
             <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-xs font-bold tracking-widest text-white/40">
                 T
             </div>
-            <div className="h-px flex-1 bg-white/10" />
-            <span className="text-[10px] md:text-[11px] font-bold tracking-[0.4em] text-primary uppercase">
-                OUR TEAM
-            </span>
+            {/* Line container needing relative for absolute position text */}
+            <div className="relative flex-1 h-px bg-white/10">
+                <span className="absolute top-4 left-0 text-[10px] md:text-[11px] font-bold tracking-[0.4em] text-primary uppercase">
+                    TEAM.
+                </span>
+            </div>
         </div>
 
-        {/* Introduction */}
-        <div className="mb-16 md:w-2/3 lg:w-1/2">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium text-white mb-6">
-              Our Design  Experts
-            </h2>
-            <p className="text-muted text-lg leading-relaxed">
-                We are a diverse team of architects, designers, and creative thinkers united by a passion for redefining space and form.
-            </p>
-        </div>
+        {/* Content Layout */}
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
+            
+            {/* Left Column: Title & Intro */}
+            <div className="lg:w-1/3 flex flex-col items-start gap-8 flex-shrink-0">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-normal tracking-wide leading-tight uppercase">
+                    OUR DESIGN EXPERTS
+                </h2>
+                
+                <p className="text-white/40 text-lg leading-relaxed max-w-sm">
+                    We develop aesthetic, functional and innovative design solutions with our team of experts.
+                </p>
 
-        {/* Grid Layout (Mapping) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {teamMembers.map((member) => (
-            <TeamMemberCard key={member.id} member={member} />
-          ))}
+                <div className="mt-8">
+                    <Link 
+                        href="/team" 
+                        className="inline-flex items-center justify-center px-8 py-4 border border-white/10 rounded-full text-xs font-bold tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all duration-300"
+                    >
+                        ALL TEAM
+                    </Link>
+                </div>
+            </div>
+
+            {/* Right Column: Team Slider */}
+            <div className="lg:w-2/3 min-w-0"> {/* min-w-0 forces flex child to shrink properly if needed */}
+                 <div className="flex gap-6 overflow-x-auto pb-12 -mb-12 no-scrollbar scroll-smooth" style={{scrollbarWidth: 'none', msOverflowStyle: 'none'}}>
+                    {teamMembers.map((member) => (
+                        <div 
+                            key={member.id} 
+                            data-cursor="drag"
+                            className="group relative flex-shrink-0 w-[280px] md:w-[240px] aspect-[3/4] overflow-hidden bg-[#1a1a1a] rounded-sm cursor-none"
+                        >
+                            {/* Image */}
+                            <Image
+                                src={member.image}
+                                alt={member.name}
+                                fill
+                                className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                            />
+
+                            {/* Hover Overlay - Gradient from bottom */}
+                            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                            {/* Content - Centered Bottom */}
+                            <div className="absolute bottom-0 left-0 w-full p-8 flex flex-col items-center justify-end translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                                <h3 className="text-xl font-normal text-white mb-3 text-center">
+                                    {member.name}
+                                </h3>
+                                {/* Separator Line */}
+                                <div className="w-12 h-px bg-white/20 mb-3" />
+                                
+                                <span className="text-sm font-medium tracking-wide text-white/60 uppercase">
+                                    {member.role}
+                                </span>
+                            </div>
+                        </div>
+                    ))}
+                 </div>
+            </div>
+
         </div>
 
       </div>

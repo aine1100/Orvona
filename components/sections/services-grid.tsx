@@ -39,7 +39,10 @@ const services = [
 // Service Card Component (modulation)
 function ServiceCard({ service }: { service: typeof services[0] }) {
     return (
-        <div className="group relative p-10 md:p-12 bg-surface border border-white/[0.03] transition-all duration-500 flex flex-col gap-10 overflow-hidden cursor-pointer hover:bg-[#141414]">
+        <div
+            data-cursor="drag"
+            className="group relative p-10 md:p-12 bg-surface border border-white/[0.03] transition-all duration-500 flex flex-col gap-10 overflow-hidden cursor-none hover:bg-[#141414]"
+        >
             {/* Animated corner accent */}
             <div className="absolute -top-12 -right-12 w-24 h-24 bg-primary transition-all duration-500 group-hover:top-0 group-hover:right-0 group-hover:w-32 group-hover:h-32 rounded-bl-[100px] opacity-0 group-hover:opacity-100 flex items-center justify-center p-8">
                 <ArrowUpRight className="w-6 h-6 text-white relative top-2 left-2" />

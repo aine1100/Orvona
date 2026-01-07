@@ -1,10 +1,16 @@
-"use client"; 
+"use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import { Quote, Play, Star } from "lucide-react";
 
 const testimonials = [
+  {
+    text: "A seamless design journey from start to finish. Every detail was thoughtfully planned and perfectly executed.",
+    author: "Emily Collins",
+    role: "Interior Consultant",
+    avatar: "/about-villa.png",
+    rating: 5,
+  },
   {
     text: "They transformed our space beyond expectations. Elegant and truly timeless design work throughout.",
     author: "Martin Dan",
@@ -19,159 +25,156 @@ const testimonials = [
     avatar: "/about-villa.png",
     rating: 5,
   },
-  {
-    text: "Exceptional design meets flawless execution. Our villa is now a reflection of modern luxury and comfort.",
-    author: "Sofia Rodriguez",
-    role: "Art Collector",
-    avatar: "/about-villa.png",
-    rating: 5,
-  },
 ];
 
 const marqueeItems = [
-  "design",
-  "3d visualization",
-  "sustainable design",
-  "color theory",
-  "furniture layout",
-  "cad drafting",
-  "scandinavian style",
+  "urban style",
+  "open concept",
+  "material selection",
+  "interior design",
+  "architecture",
+  "minimalist",
+  "modern living",
+  "space planning",
+  "lighting design",
 ];
+import Image from "next/image";
 
 export default function TestimonialsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [direction, setDirection] = useState<"left" | "right">("left");
 
-  // Auto-rotate testimonials every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setDirection("left");
       setActiveIndex((prev) => (prev + 1) % testimonials.length);
     }, 5000);
-
     return () => clearInterval(interval);
   }, []);
 
   const currentTestimonial = testimonials[activeIndex];
 
   return (
-    <section className="relative min-h-[600px] lg:min-h-[700px] bg-[#0a0a0a] text-white overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 opacity-30">
-        <Image
-          src="/about-villa.png"
-          alt="Background"
-          fill
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/90 to-[#0a0a0a]/60" />
+    <section className="relative min-h-screen bg-[#141414] text-white overflow-hidden flex items-center">
+      
+      {/* Large Watermark Text */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <h2 className="text-[clamp(8rem,20vw,24rem)] font-bold text-white/[0.03] select-none tracking-tighter leading-none">
+          ORNAVA
+        </h2>
       </div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-12 md:px-16 lg:px-24 py-20 lg:py-32">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          {/* Left: Testimonial Card with horizontal slide animation */}
-          <div className="relative overflow-hidden">
+      {/* Main Content */}
+      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-8 lg:px-16 py-20">
+        <div className="relative flex items-center min-h-[600px]">
+          
+          {/* Testimonial Card - Left Side */}
+          <div className="relative  z-20 md:-top-34 lg:left-20 w-full max-w-[450px]">
             <div
               key={activeIndex}
-              className={`bg-[#1a1a1a]/60 backdrop-blur-md p-10 md:p-14 border border-white/5 animate-in slide-in-from-right duration-700`}
+              className="bg-[#1c1c1c] rounded-md p-10 shadow-2xl animate-in fade-in slide-in-from-left-8 duration-700"
             >
               {/* Quote Icon */}
-              <Quote className="w-12 h-12 md:w-14 md:h-14 text-primary/40 mb-8" strokeWidth={1} />
+              <div className="mb-8">
+                <svg 
+                  width="64" 
+                  height="64" 
+                  viewBox="0 0 64 64" 
+                  fill="none" 
+                  className="text-[#d4af6a]"
+                >
+                  <path 
+                    d="M12 40C12 33.3726 17.3726 28 24 28V20C12.9543 20 4 28.9543 4 40V52H24V40H12Z" 
+                    fill="currentColor"
+                    opacity="0.2"
+                  />
+                  <path 
+                    d="M40 40C40 33.3726 45.3726 28 52 28V20C40.9543 20 32 28.9543 32 40V52H52V40H40Z" 
+                    fill="currentColor"
+                    opacity="0.2"
+                  />
+                </svg>
+              </div>
 
               {/* Testimonial Text */}
-              <p className="text-base md:text-lg leading-relaxed text-white/60 mb-8">
+              <p className="text-lg lg:text-xl leading-relaxed text-gray-400 mb-8 font-light">
                 {currentTestimonial.text}
               </p>
 
               {/* Star Rating */}
               <div className="flex gap-1 mb-8">
                 {[...Array(currentTestimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                  <Star key={i} className="w-4 h-4 fill-[#d4af6a] text-[#d4af6a]" />
                 ))}
               </div>
 
               {/* Author Info */}
-              <div className="flex items-center gap-4">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden border border-white/10 bg-white/5">
-                  <Image
+              <div className="flex items-center gap-4 mb-8">
+                <div className="relative w-12 h-12 rounded-full overflow-hidden bg-white/5">
+                  <img
                     src={currentTestimonial.avatar}
                     alt={currentTestimonial.author}
-                    fill
-                    className="object-cover"
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div>
-                  <h4 className="text-base font-medium tracking-tight">
+                  <h4 className="text-base font-medium text-white">
                     {currentTestimonial.author}
                   </h4>
-                  <p className="text-sm text-white/40">{currentTestimonial.role}</p>
+                  <p className="text-sm text-gray-500">{currentTestimonial.role}</p>
                 </div>
               </div>
 
-              {/* Decorative Pattern */}
-              <div
-                className="absolute inset-0 opacity-[0.02] pointer-events-none"
-                style={{
-                  backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)",
-                  backgroundSize: "16px 16px",
-                }}
-              />
+              {/* Navigation Dots */}
+              
             </div>
           </div>
 
-          <div className="relative flex flex-col items-center justify-center gap-8">
-            {/* Large Brand Name */}
-            <h2 className="text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-white/[0.03] select-none">
-              ORNAVA
-            </h2>
-
-            {/* Watch Trailer Button */}
-            <button className="group flex items-center gap-4 px-8 py-4 rounded-full border border-white/10 hover:border-primary transition-all duration-300 hover:bg-primary/10">
-              <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-primary transition-all duration-300">
-                <Play className="w-5 h-5 text-white group-hover:text-black transition-colors" fill="currentColor" />
+          {/* Image Block - Right Side with Overlap */}
+          <div className="absolute left-[280px] lg:left-[200px] right-0 top-0 bottom-0 h-full">
+            <div className="relative rounded-md w-full h-full lg:max-h-[550px] overflow-hidden group">
+              <Image
+                src="/about-villa.png"
+                width={500}
+                height={300}
+                alt="Modern interior design bedroom"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 bg-black/70"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
+              
+              {/* Watch Trailer Button */}
+              <div className="absolute bottom-16 right-16 z-20">
+                <button className="group/btn flex items-center gap-4 hover:gap-5 transition-all duration-300">
+                  <div className="relative w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover/btn:bg-[#d4af6a] group-hover/btn:border-[#d4af6a] transition-all duration-300">
+                    <Play className="w-5 h-5 text-white ml-0.5 fill-white" />
+                  </div>
+                  <span className="text-base font-light tracking-wide text-white">
+                    Watch the trailer
+                  </span>
+                </button>
               </div>
-              <span className="text-sm font-medium tracking-wider">Watch the trailer</span>
-            </button>
+            </div>
           </div>
-        </div>
 
-        {/* Pagination Dots */}
-        <div className="flex justify-center gap-3 mt-16">
-          {testimonials.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => {
-                setDirection(i > activeIndex ? "left" : "right");
-                setActiveIndex(i);
-              }}
-              className={`h-1.5 rounded-full transition-all duration-500 ${
-                i === activeIndex
-                  ? "bg-primary w-8 md:w-10"
-                  : "bg-white/20 w-1.5 md:w-2 hover:bg-white/40"
-              }`}
-            />
-          ))}
         </div>
+      </div>
 
-        {/* Scrolling Text Marquee */}
-        <div className="absolute bottom-0 left-0 right-0 py-6 overflow-hidden">
-          <div className="flex whitespace-nowrap animate-marquee">
-            {/* First set */}
-            {marqueeItems.map((item, index) => (
-              <div key={`first-${index}`} className="flex items-center gap-5 px-8">
-                <span className="text-sm text-white/40 font-medium">{item}</span>
-                <span className="text-primary text-xs">✦</span>
-              </div>
-            ))}
-            {marqueeItems.map((item, index) => (
-              <div key={`second-${index}`} className="flex items-center gap-5 px-8">
-                <span className="text-sm text-white/40 font-medium">{item}</span>
-                <span className="text-primary text-xs">✦</span>
+      {/* Scrolling Marquee */}
+      <div className="absolute bottom-0 left-0 right-0 py-8 z-30 ">
+        <div className="flex whitespace-nowrap">
+          <div className="flex animate-marquee">
+            {[...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, index) => (
+              <div key={index} className="flex items-center gap-8 px-6">
+                <span className="text-sm uppercase tracking-[0.3em] text-gray-500 font-light hover:text-white transition-colors duration-300 cursor-default">
+                  {item}
+                </span>
+                <span className="text-[#d4af6a]/40 text-xs">★</span>
               </div>
             ))}
           </div>
         </div>
       </div>
+
+      
+
     </section>
   );
 }

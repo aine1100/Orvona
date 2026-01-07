@@ -30,7 +30,10 @@ const projects = [
 // Project Card Component (modulation)
 function ProjectCard({ project }: { project: typeof projects[0] }) {
   return (
-    <div className="group relative aspect-[4/3] overflow-hidden rounded-sm cursor-pointer">
+    <div 
+        data-cursor="drag"
+        className="group relative aspect-[4/3] overflow-hidden rounded-sm cursor-none"
+    >
       {/* Project Image */}
       <Image
         src={project.image}
