@@ -79,6 +79,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Hide default cursor on desktop */
+@media (hover: hover) and (pointer: fine) {
+  body, * {
+    cursor: none !important;
+  }
+}
+
 @utility nav-bg {
   background-color: #0c0c0c;
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);

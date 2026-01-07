@@ -2,19 +2,21 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
 import { Mountain, Menu, X } from "lucide-react";
 
 const navItems = [
-    { name: "HOME", href: "/", active: true },
-    { name: "ABOUT", href: "#about" },
-    { name: "SERVICES", href: "#services" },
-    { name: "PORTFOLIO", href: "#portfolio" },
-    { name: "CONTACT", href: "#contact" },
+    { name: "HOME", href: "/" },
+    { name: "ABOUT", href: "/about" },
+    { name: "SERVICES", href: "/services" },
+    { name: "PORTFOLIO", href: "/portfolio" },
+    { name: "CONTACT", href: "/contact" },
 ];
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const pathname = usePathname();
 
     return (
         <>
@@ -29,19 +31,22 @@ export default function Navbar() {
 
                 {/* Desktop Menu Links */}
                 <div className="hidden md:flex items-center gap-2">
-                    {navItems.map((item) => (
-                        <Link
-                            key={item.name}
-                            href={item.href}
-                            className={cn(
-                                "relative px-6 py-2 text-[12px] font-medium tracking-[0.2em] transition-colors group flex items-center justify-center",
-                                item.active ? "text-primary" : "text-white/60 hover:text-white"
-                            )}
-                        >
-                            <span className="absolute inset-x-0 m-auto w-0 h-0 bg-white/5 rounded-full transition-all duration-300 group-hover:w-24 group-hover:h-24 -z-[1]" />
-                            {item.name}
-                        </Link>
-                    ))}
+                    {navItems.map((item) => {
+                        const isActive = pathname === item.href;
+                        return (
+                            <Link
+                                key={item.name}
+                                href={item.href}
+                                className={cn(
+                                    "relative px-6 py-2 text-[12px] font-medium tracking-[0.2em] transition-colors group flex items-center justify-center",
+                                    isActive ? "text-primary" : "text-white/60 hover:text-white"
+                                )}
+                            >
+                                <span className="absolute inset-x-0 m-auto w-0 h-0 bg-white/5 rounded-full transition-all duration-300 group-hover:w-24 group-hover:h-24 -z-[1]" />
+                                {item.name}
+                            </Link>
+                        );
+                    })}
                 </div>
 
                 {/* Mobile Menu Toggle */}
@@ -60,19 +65,22 @@ export default function Navbar() {
                     isOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
                 )}
             >
-                {navItems.map((item) => (
-                    <Link
-                        key={item.name}
-                        href={item.href}
-                        onClick={() => setIsOpen(false)}
-                        className={cn(
-                            "text-xl font-bold tracking-[0.3em] transition-colors",
-                            item.active ? "text-primary" : "text-white/60 hover:text-white"
-                        )}
-                    >
-                        {item.name}
-                    </Link>
-                ))}
+                {navItems.map((item) => {
+                    const isActive = pathname === item.href;
+                    return (
+                        <Link
+                            key={item.name}
+                            href={item.href}
+                            onClick={() => setIsOpen(false)}
+                            className={cn(
+                                "text-xl font-bold tracking-[0.3em] transition-colors",
+                                isActive ? "text-primary" : "text-white/60 hover:text-white"
+                            )}
+                        >
+                            {item.name}
+                        </Link>
+                    );
+                })}
             </div>
         </>
     );

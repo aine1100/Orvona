@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
+import CustomCursor from "@/components/ui/custom-cursor";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body
         className={`${dmSans.variable} font-dm-sans antialiased`}
       >
+        <CustomCursor />
         {children}
       </body>
     </html>

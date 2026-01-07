@@ -8,10 +8,12 @@ import FAQSection from "@/components/sections/faq-section";
 import TestimonialsSection from "@/components/sections/testimonials-section";
 import Footer from "@/components/layout/footer";
 import ScrollToTop from "@/components/ui/scroll-to-top";
+import LoadingScreen from "@/components/ui/loading-screen";
 
 export default function Home() {
   return (
     <main className="relative min-h-screen">
+      <LoadingScreen />
       <Navbar />
       <HeroSection />
       <AboutSection />
