@@ -85,17 +85,7 @@ export default function AboutSection() {
                 </div>
             </div>
 
-            {/* Scroll to top mock dot in corner */}
-            <div className="absolute top-10 left-10 hidden lg:block">
-                <div className="w-2 h-2 rounded-full bg-white/20" />
-            </div>
-
-            {/* Right bottom scroll to top indicator */}
-            <div className="absolute right-10 bottom-10 hidden lg:flex items-center justify-center w-12 h-12 rounded-full border border-white/10 hover:border-primary transition-colors cursor-pointer group">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white/60 group-hover:text-primary transition-colors">
-                    <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-            </div>
+           
         </section>
     );
 }
