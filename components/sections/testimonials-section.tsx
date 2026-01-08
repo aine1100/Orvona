@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Quote, Play, Star } from "lucide-react";
+import { cn } from "@/lib/cn";
 
 const testimonials = [
   {
@@ -42,18 +43,123 @@ import Image from "next/image";
 
 export default function TestimonialsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [nextIndex, setNextIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
+      // Trigger transition
+      const next = (activeIndex + 1) % testimonials.length;
+      setNextIndex(next);
 
-  const currentTestimonial = testimonials[activeIndex];
+      // Wait for animation to complete before resetting
+      // Animation total duration = delay (300ms) + duration (800ms) = 1100ms
+      // We give it a bit of buffer
+      setTimeout(() => {
+        setActiveIndex(next);
+        setNextIndex(null);
+      }, 1100);
+      
+    }, 5000); 
+    return () => clearInterval(interval);
+  }, [activeIndex]);
+
+  const renderContent = (index: number, state: 'active' | 'next') => {
+    const testimonial = testimonials[index];
+    const isNext = state === 'next';
+    
+    return (
+      <div
+        key={`${index}-${state}`} 
+        className={cn(
+          "absolute inset-0 px-8 py-8 justify-center  flex flex-col gap-4", // Fill the static card
+          // Base state
+          !isNext && nextIndex !== null && "animate-[curtainOut_0.8s_ease-in-out_forwards]", // Outgoing
+          isNext && "animate-[curtainIn_0.8s_ease-in-out_0.3s_backwards]", // Incoming (with delay)
+          // Static state
+          state === 'active' && nextIndex === null && "translate-x-0 opacity-100" 
+        )}
+        style={{
+          zIndex: isNext ? 20 : 10
+        }}
+      >
+        {/* Quote Icon */}
+        <div className="">
+          <svg 
+            width="64" 
+            height="64" 
+            viewBox="0 0 64 64" 
+            fill="none" 
+            className="text-[#d4af6a]"
+          >
+            <path 
+              d="M12 40C12 33.3726 17.3726 28 24 28V20C12.9543 20 4 28.9543 4 40V52H24V40H12Z" 
+              fill="currentColor"
+              opacity="0.2"
+            />
+            <path 
+              d="M40 40C40 33.3726 45.3726 28 52 28V20C40.9543 20 32 28.9543 32 40V52H52V40H40Z" 
+              fill="currentColor"
+              opacity="0.2"
+            />
+          </svg>
+        </div>
+
+        {/* Testimonial Text */}
+        <p className="text-md leading-relaxed text-gray-400 font-light">
+          {testimonial.text}
+        </p>
+
+        {/* Star Rating */}
+        <div className="flex gap-1 pb-2">
+          {[...Array(testimonial.rating)].map((_, i) => (
+            <Star key={i} className="w-3 h-3 fill-[#d4af6a] text-[#d4af6a]" />
+          ))}
+        </div>
+
+        {/* Author Info */}
+        <div className="flex items-center gap-4">
+          <div className="relative w-12 h-12 rounded-full overflow-hidden bg-white/5">
+            <img
+              src={testimonial.avatar}
+              alt={testimonial.author}
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div>
+            <h4 className="text-base font-medium text-white">
+              {testimonial.author}
+            </h4>
+            <p className="text-sm text-gray-500">{testimonial.role}</p>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <section className="relative min-h-screen bg-[#141414] text-white overflow-hidden flex items-center">
+      <style jsx global>{`
+        @keyframes curtainIn {
+          0% {
+            transform: translateX(100%) scaleX(0.9) scaleY(0.95);
+            opacity: 1;
+          }
+          100% {
+            transform: translateX(0) scaleX(1) scaleY(1);
+            opacity: 1;
+          }
+        }
+        @keyframes curtainOut {
+          0% {
+            transform: translateX(0) scale(1);
+            opacity: 1;
+          }
+          100% {
+            transform: translateX(-100%) scale(1);
+            opacity: 1;
+          }
+        }
+      `}</style>
       
       {/* Large Watermark Text */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -66,67 +172,12 @@ export default function TestimonialsSection() {
       <div className="relative z-10 w-full max-w-[1600px] mx-auto px-8 lg:px-16 py-20">
         <div className="relative flex items-center min-h-[600px]">
           
-          {/* Testimonial Card - Left Side */}
-          <div className="relative  z-20 md:-top-44 lg:left-20 w-full max-w-[450px]">
-            <div
-              key={activeIndex}
-              className="bg-[#1c1c1c] rounded-md px-6 py-2 shadow-2xl animate-in fade-in slide-in-from-left-8 duration-700"
-            >
-              {/* Quote Icon */}
-              <div className="mb-8">
-                <svg 
-                  width="64" 
-                  height="64" 
-                  viewBox="0 0 64 64" 
-                  fill="none" 
-                  className="text-[#d4af6a]"
-                >
-                  <path 
-                    d="M12 40C12 33.3726 17.3726 28 24 28V20C12.9543 20 4 28.9543 4 40V52H24V40H12Z" 
-                    fill="currentColor"
-                    opacity="0.2"
-                  />
-                  <path 
-                    d="M40 40C40 33.3726 45.3726 28 52 28V20C40.9543 20 32 28.9543 32 40V52H52V40H40Z" 
-                    fill="currentColor"
-                    opacity="0.2"
-                  />
-                </svg>
-              </div>
-
-              {/* Testimonial Text */}
-              <p className="text-md leading-relaxed text-gray-400 mb-8 font-light">
-                {currentTestimonial.text}
-              </p>
-
-              {/* Star Rating */}
-              <div className="flex gap-1 mb-8">
-                {[...Array(currentTestimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-3 h-3 fill-[#d4af6a] text-[#d4af6a]" />
-                ))}
-              </div>
-
-              {/* Author Info */}
-              <div className="flex items-center gap-4 mb-8">
-                <div className="relative w-8 h-8 rounded-full overflow-hidden bg-white/5">
-                  <img
-                    src={currentTestimonial.avatar}
-                    alt={currentTestimonial.author}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div>
-                  <h4 className="text-base font-medium text-white">
-                    {currentTestimonial.author}
-                  </h4>
-                  <p className="text-sm text-gray-500">{currentTestimonial.role}</p>
-                </div>
-              </div>
-
-              {/* Navigation Dots */}
-              
-            </div>
+          {/* Testimonial Card Container - STATIC NOW */}
+          <div className="relative z-20 md:-top-44 lg:left-20 w-full max-w-[400px] h-[320px] bg-[#1c1c1c] rounded-md shadow-2xl overflow-hidden"> 
+             {renderContent(activeIndex, 'active')}
+             {nextIndex !== null && renderContent(nextIndex, 'next')}
           </div>
+
 
           {/* Image Block - Right Side with Overlap */}
           <div className="absolute left-[280px] lg:left-[200px] right-0 top-0 bottom-0 h-full">

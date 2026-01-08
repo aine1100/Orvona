@@ -13,7 +13,7 @@ export default function SectionHeader({ title, letter, className }: SectionHeade
         {letter}
       </div>
       <div className="relative flex-1 h-px bg-white/10">
-        <span className="absolute top-4 left-0 text-[10px] md:text-[11px] font-bold tracking-[0.4em] text-primary uppercase">
+        <span className="absolute top-4 left-0 text-[10px] md:text-[11px] font-bold tracking-[0.4em] text-white uppercase">
           {title}
         </span>
       </div>
