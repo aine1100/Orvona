@@ -21,10 +21,12 @@ export function useCursorPositionShift<T extends HTMLElement, U extends HTMLElem
   const [normalizedCursor, setNormalizedCursor] = useState(initialValue); // -1 to 1
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
   const [shift, setShift] = useState(initialValue);
   
   // Track target shift to allow for return-to-center on leave
   const targetShift = useRef(initialValue);
+  const lastMousePos = useRef(0);
   const rafId = useRef<number | null>(null);
 
   useEffect(() => {
@@ -32,25 +34,39 @@ export function useCursorPositionShift<T extends HTMLElement, U extends HTMLElem
     if (!container) return;
 
     const handleMouseMove = (e: MouseEvent) => {
-      const rect = container.getBoundingClientRect();
       const isHorizontal = direction === "horizontal";
-      
-      const mouseX = e.clientX;
-      const mouseY = e.clientY;
-      setCursorPos({ x: mouseX, y: mouseY });
+      const currentPos = isHorizontal ? e.clientX : e.clientY;
+      setCursorPos({ x: e.clientX, y: e.clientY });
 
-      const center = isHorizontal ? rect.left + rect.width / 2 : rect.top + rect.height / 2;
-      const pos = isHorizontal ? mouseX : mouseY;
-      const maxDist = isHorizontal ? rect.width / 2 : rect.height / 2;
+      if (isDragging) {
+        const containerSize = isHorizontal ? container.offsetWidth : container.offsetHeight;
+        if (containerSize > 0) {
+          const delta = currentPos - lastMousePos.current;
+          // 1 full container width traverse = 2 units of normalized shift (-1 to 1)
+          const normalizedDelta = delta / (containerSize / 2);
+          
+          // To reveal more to the right, we move track left (targetShift increases towards 1)
+          // Dragging LEFT (delta < 0) should reveal more to the RIGHT.
+          // So we SUBTRACT the normalizedDelta (negative delta makes it positive)
+          targetShift.current -= normalizedDelta * intensity;
+          targetShift.current = Math.max(-1, Math.min(1, targetShift.current));
+        }
+      }
       
-      let normalized = (pos - center) / maxDist;
-      normalized = Math.max(-1, Math.min(1, normalized));
-      setNormalizedCursor(normalized);
+      lastMousePos.current = currentPos;
+    };
 
-      // The shift is direct: mapping -1 to 1 
-      // We don't know the track width here yet, so we return normalized
-      // and let the component decide the pixel value, OR we can calculate it if we have nested refs.
-      targetShift.current = normalized;
+    const handleMouseDown = (e: MouseEvent) => {
+      // Only handle left click
+      if (e.button !== 0) return;
+      
+      setIsDragging(true);
+      const isHorizontal = direction === "horizontal";
+      lastMousePos.current = isHorizontal ? e.clientX : e.clientY;
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
     };
 
     const handleMouseEnter = () => {
@@ -59,17 +75,25 @@ export function useCursorPositionShift<T extends HTMLElement, U extends HTMLElem
 
     const handleMouseLeave = () => {
       setIsHovering(false);
-      targetShift.current = initialValue; // Return to initial state
+      // Snap back to initial only if NOT actively dragging
+      if (!isDragging) {
+        targetShift.current = initialValue;
+      }
     };
 
-    container.addEventListener("mousemove", handleMouseMove);
+    // Container specific listeners
     container.addEventListener("mouseenter", handleMouseEnter);
     container.addEventListener("mouseleave", handleMouseLeave);
+    container.addEventListener("mousedown", handleMouseDown);
+    
+    // Window listeners to handle dragging outside the container
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseup", handleMouseUp);
 
     const loop = () => {
       setShift((prev) => {
         const diff = targetShift.current - prev;
-        if (Math.abs(diff) < 0.001) return targetShift.current;
+        if (Math.abs(diff) < 0.0001) return targetShift.current;
         return prev + diff * smoothing;
       });
       rafId.current = requestAnimationFrame(loop);
@@ -77,17 +101,20 @@ export function useCursorPositionShift<T extends HTMLElement, U extends HTMLElem
     rafId.current = requestAnimationFrame(loop);
 
     return () => {
-      container.removeEventListener("mousemove", handleMouseMove);
       container.removeEventListener("mouseenter", handleMouseEnter);
       container.removeEventListener("mouseleave", handleMouseLeave);
+      container.removeEventListener("mousedown", handleMouseDown);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
       if (rafId.current) cancelAnimationFrame(rafId.current);
     };
-  }, [direction, smoothing]);
+  }, [direction, smoothing, intensity, initialValue, isDragging]);
 
   return { 
     containerRef, 
     normalizedCursor: shift, // Smoothed normalized value (-1 to 1)
     isHovering,
+    isDragging,
     cursorPos
   };
 }
