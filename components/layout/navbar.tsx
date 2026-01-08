@@ -17,7 +17,7 @@ const navItems = [
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const pathname = usePathname();
+    const pathname = usePathname() ;
 
     return (
         <>
@@ -33,7 +33,7 @@ export default function Navbar() {
                 {/* Desktop Menu Links */}
                 <div className="hidden md:flex items-center gap-2">
                     {navItems.map((item) => {
-                        const isActive = pathname === item.href;
+                        const isActive = item.href === "/" ? pathname === "/" : pathname?.startsWith(item.href);
                         return (
                             <Link
                                 key={item.name}
@@ -67,7 +67,7 @@ export default function Navbar() {
                 )}
             >
                 {navItems.map((item) => {
-                    const isActive = pathname === item.href;
+                    const isActive = item.href === "/" ? pathname === "/" : pathname?.startsWith(item.href);
                     return (
                         <Link
                             key={item.name}

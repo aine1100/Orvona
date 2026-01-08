@@ -1,36 +1,43 @@
 "use client";
 
+import Link from "next/link";
 import { Home, Palette, Box, Sofa, UtensilsCrossed, Bath, ArrowUpRight } from "lucide-react";
 import SectionHeader from "@/components/ui/section-header";
 
 // Services data (mapping source) - expanded to 6 services
-const services = [
+export const services = [
     {
+        slug: "architecture",
         title: "Architecture",
         description: "Architectural designs that balance aesthetics, function and innovative thinking.",
         icon: Home,
     },
     {
+        slug: "interior-design",
         title: "Interior design",
         description: "We create elegant, functional interiors that reflect your lifestyle and personal taste.",
         icon: Palette,
     },
     {
+        slug: "3d-modelling",
         title: "3D modelling",
         description: "High-quality 3D modelling solutions for architecture, interiors and products.",
         icon: Box,
     },
     {
+        slug: "decor-plan",
         title: "Decor plan",
         description: "Creative decor plans that balance style, comfort and functional harmony.",
         icon: Sofa,
     },
     {
+        slug: "kitchen-design",
         title: "Kitchen design",
         description: "Transforming everyday cooking with elegant modern and functional kitchen design.",
         icon: UtensilsCrossed,
     },
     {
+        slug: "bathroom-design",
         title: "Bathroom design",
         description: "Elevating daily routines with timeless, modern and elegant bathroom design.",
         icon: Bath,
@@ -45,9 +52,12 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
             className="group relative p-10 md:p-12 bg-surface border border-white/[0.03] transition-all duration-500 flex flex-col gap-10 overflow-hidden cursor-none hover:bg-[#141414]"
         >
             {/* Animated corner accent */}
-            <div className="absolute -top-12 -right-12 w-24 h-24 bg-primary transition-all duration-500 group-hover:top-0 group-hover:right-0 group-hover:w-32 group-hover:h-32 rounded-bl-[100px] opacity-0 group-hover:opacity-100 flex items-center justify-center p-8">
+            <Link 
+                href={`/services/${service.slug}`}
+                className="absolute -top-12 -right-12 w-24 h-24 bg-primary transition-all duration-500 group-hover:top-0 group-hover:right-0 group-hover:w-32 group-hover:h-32 rounded-bl-[100px] opacity-0 group-hover:opacity-100 flex items-center justify-center p-8 z-20"
+            >
                 <ArrowUpRight className="w-6 h-6 text-white relative top-2 left-2" />
-            </div>
+            </Link>
 
             {/* Static arrow */}
             <div className="absolute top-8 right-8 w-10 h-10 rounded-full border border-white/5 flex items-center justify-center transition-opacity duration-300 group-hover:opacity-0">
