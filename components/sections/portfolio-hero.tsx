@@ -16,10 +16,7 @@ export default function PortfolioHero() {
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-wider text-white mb-4">
                     OUR PORTFOLIO
                 </h1>
-                {/* Decorative dot */}
-                <div className="flex justify-center">
-                    <div className="w-2 h-2 rounded-full bg-primary" />
-                </div>
+               
             </div>
         </section>
     );
