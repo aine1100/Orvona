@@ -1,6 +1,7 @@
 "use client";
 
 import { Home, Palette, Box, Sofa, UtensilsCrossed, Bath, ArrowUpRight } from "lucide-react";
+import SectionHeader from "@/components/ui/section-header";
 
 // Services data (mapping source) - expanded to 6 services
 const services = [
@@ -82,6 +83,7 @@ export default function ServicesGrid() {
     return (
         <section className="relative py-24  bg-[#141414] text-white overflow-hidden">
             <div className="relative z-10  max-w-[1400px] mx-auto px-6 sm:px-12 md:px-16 lg:px-24">
+                <SectionHeader title="SERVICES." letter="S" />
                 {/* Services Grid (Mapping) */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
                     {services.map((service, index) => (

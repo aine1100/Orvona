@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { Home, Palette, Box, ArrowUpRight, ArrowLeftRight } from "lucide-react";
+import SectionHeader from "../ui/section-header";
 
 const services = [
   {
@@ -37,21 +38,7 @@ export default function ServicesSection() {
 
             <div className="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-12 md:px-16 lg:px-24">
                 {/* Section Header */}
-                <div className="relative flex items-center gap-6 mb-20 lg:mb-32">
-                    <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-xs font-bold tracking-widest text-white/30 backdrop-blur-md">
-                        S
-                    </div>
-                    
-                    <div className="absolute left-[24px] right-0 h-px bg-white/5 -z-10" />
-                    
-                    <div className="flex flex-col items-start   backdrop-blur-sm px-4 py-2">
-                        <span className="text-[10px] md:text-[11px] font-bold tracking-[0.5em] text-primary uppercase mb-2">
-                            SERVICES.
-                        </span>
-                    </div>
-
-                   
-                </div>
+                 <SectionHeader title="SERVICE." letter="S" />
 
                 {/* Services Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">

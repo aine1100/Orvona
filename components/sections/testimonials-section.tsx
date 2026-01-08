@@ -67,10 +67,10 @@ export default function TestimonialsSection() {
         <div className="relative flex items-center min-h-[600px]">
           
           {/* Testimonial Card - Left Side */}
-          <div className="relative  z-20 md:-top-34 lg:left-20 w-full max-w-[450px]">
+          <div className="relative  z-20 md:-top-44 lg:left-20 w-full max-w-[450px]">
             <div
               key={activeIndex}
-              className="bg-[#1c1c1c] rounded-md p-10 shadow-2xl animate-in fade-in slide-in-from-left-8 duration-700"
+              className="bg-[#1c1c1c] rounded-md px-6 py-2 shadow-2xl animate-in fade-in slide-in-from-left-8 duration-700"
             >
               {/* Quote Icon */}
               <div className="mb-8">
@@ -95,20 +95,20 @@ export default function TestimonialsSection() {
               </div>
 
               {/* Testimonial Text */}
-              <p className="text-lg lg:text-xl leading-relaxed text-gray-400 mb-8 font-light">
+              <p className="text-md leading-relaxed text-gray-400 mb-8 font-light">
                 {currentTestimonial.text}
               </p>
 
               {/* Star Rating */}
               <div className="flex gap-1 mb-8">
                 {[...Array(currentTestimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-[#d4af6a] text-[#d4af6a]" />
+                  <Star key={i} className="w-3 h-3 fill-[#d4af6a] text-[#d4af6a]" />
                 ))}
               </div>
 
               {/* Author Info */}
               <div className="flex items-center gap-4 mb-8">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden bg-white/5">
+                <div className="relative w-8 h-8 rounded-full overflow-hidden bg-white/5">
                   <img
                     src={currentTestimonial.avatar}
                     alt={currentTestimonial.author}

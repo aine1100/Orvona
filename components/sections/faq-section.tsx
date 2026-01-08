@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/cn";
+import SectionHeader from "../ui/section-header";
 
 // 1. Define the data type
 type FAQItem = {
@@ -86,16 +87,7 @@ export default function FAQSection() {
       <div className="max-w-[1400px] mx-auto px-6 sm:px-12 md:px-16 lg:px-24">
         
         {/* Header */}
-        <div className="flex items-center gap-6 mb-16 lg:mb-24">
-          <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-xs font-bold tracking-widest text-white/40">
-            F
-          </div>
-          <div className="h-px flex-1 bg-white/10" />
-          <span className="text-[10px] md:text-[11px] font-bold tracking-[0.4em] text-primary uppercase">
-            FAQS.
-          </span>
-        </div>
-
+          <SectionHeader title="FAQ." letter="F" />
         {/* Content Grid */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           
