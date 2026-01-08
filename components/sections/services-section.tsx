@@ -119,7 +119,7 @@ export default function ServicesSection() {
                             <div
                                 key={index}
                                 data-cursor="drag"
-                                className="group relative flex-shrink-0 w-[85vw] md:w-[420px] aspect-[4/3] p-10 md:p-12 bg-[#202020] border border-white/[0.03] transition-all duration-500 flex flex-col gap-10 overflow-hidden hover:bg-[#141414] cursor-none"
+                                className="group relative flex-shrink-0 w-[95vw] md:w-[420px] aspect-[4/3] p-10 md:p-12 bg-[#202020] border border-white/[0.03] transition-all duration-500 flex flex-col gap-10 overflow-hidden hover:bg-[#141414] cursor-none"
                             >
                                 <Link 
                                     href={`/services/${service.slug}`}
@@ -137,7 +137,7 @@ export default function ServicesSection() {
                                 </div>
 
                                 <div className="flex flex-col gap-5">
-                                    <h3 className="text-2xl md:text-3xl font-medium tracking-tight uppercase transition-colors duration-500">
+                                    <h3 className="text-xl md:text-2xl font-medium tracking-tight uppercase transition-colors duration-500">
                                         {service.title}
                                     </h3>
                                     <p className="text-white/30 text-[15px] leading-relaxed max-w-[300px] transition-colors duration-500 group-hover:text-white/50">
