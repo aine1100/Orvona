@@ -91,10 +91,7 @@ export const servicesData: ServiceDetail[] = [
                 ]
             
             },
-            {
-                title: "Multi-State Design Experience",
-                description: "K&C Design provides architectural services across multiple jurisdictions, including but not limited to: Georgia, Florida, California, North Carolina, South Carolina, Washington, New York, Texas, Arizona, Illinois, Virginia, Missouri, Michigan, Minnesota, and additional states as required by project scope and licensing requirements."
-            }
+           
             
         ],
         quote: {
