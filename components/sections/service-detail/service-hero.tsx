@@ -11,7 +11,7 @@ export default function ServiceHero({ title, image }: { title: string; image: st
                     src={image}
                     alt={title}
                     fill
-                    className="object-cover"
+                    className="object-cover object-center"
                 />
                 <div className="absolute inset-0 bg-black/60" />
             </div>

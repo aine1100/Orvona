@@ -16,7 +16,7 @@ export default function ServiceContent({ letter, description, quote }: {
                             <span className="text-4xl md:text-6xl font-light text-primary/80">{letter}</span>
                         </div>
                         <div className="flex flex-col gap-6">
-                            <p className="text-lg md:text-xl text-white/50 leading-relaxed font-light mt-4">
+                            <p className="text-lg md:text-xl text-white/50 leading-relaxed font-light mt-4 whitespace-pre-line">
                                 {description}
                             </p>
                         </div>

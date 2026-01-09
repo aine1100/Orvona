@@ -1,9 +1,9 @@
-import { Home, Palette, Box, Sofa, UtensilsCrossed, Bath, LucideIcon } from "lucide-react";
+import { Home, Palette, Box, Zap, Leaf, Shield, Layers, MapPin, LucideIcon } from "lucide-react";
 
 export interface ServiceDetail {
     slug: string;
     title: string;
-    description: string;
+    description: string; // Used for service cards
     icon: LucideIcon;
     letter: string;
     fullDescription: string;
@@ -22,181 +22,259 @@ export interface ServiceDetail {
 
 export const servicesData: ServiceDetail[] = [
     {
-        slug: "architecture",
-        title: "Architecture",
-        description: "Architectural designs that balance aesthetics, interior, function and innovative thinking.",
+        slug: "architectural",
+        title: "Architectural",
+        description: "Architecture Built on Precision, Compliance, and Vision",
         icon: Home,
         letter: "A",
-        fullDescription: "We create architectural spaces that reflect individuality and enhance everyday living. Our approach balances style and practicality to achieve beautiful and livable environments, highlighting thoughtful details and seamless integration of modern design principles.",
+        fullDescription: "K&C Design provides comprehensive architectural and building design services for residential, commercial, and mixed-use projects across multiple U.S. states. We partner closely with owners, developers, contractors, and consultants to deliver practical solutions from concept through construction—ensuring each project is well-coordinated, buildable, and approval-ready.",
         quote: {
-            text: "The details are not the details. They make the design.",
-            author: "Charles Eames"
+            text: "Practical design solutions focused on buildability and clear communication.",
+            author: "K&C Design Team"
         },
         features: [
-            "Personalized concepts tailored to client lifestyles",
-            "Elegant material and color coordination",
-            "Seamless fusion of aesthetics and functionality"
+            "Programming and space planning",
+            "Conceptual and schematic design",
+            "Master planning and site coordination",
+            "Construction documents (CDs) and permitting",
+            "Interior architectural design and FF&E",
+            "Multi-state permitting and code expertise"
         ],
         faqs: [
             {
-                question: "What does your design package include?",
-                answer: "Our package includes conceptual design, site analysis, detailed drawings, and material selection."
+                question: "What states do you provide services in?",
+                answer: "We provide services across multiple jurisdictions including Georgia, Florida, California, Texas, New York, and many more, depending on project scope."
             },
             {
-                question: "How long does a typical project take?",
-                answer: "A typical architecture project can span from 3 to 12 months depending on complexity."
-            },
-            {
-                question: "Can I request changes during the design process?",
-                answer: "Yes, we work iteratively with our clients to ensure the final design meets their vision."
+                question: "Do you handle facility assessments?",
+                answer: "Yes, we provide detailed assessments including building and life-safety analysis, ADA accessibility surveys, and renovation feasibility studies."
             }
         ],
-        heroImage: "/about-villa.png",
-        gallery: ["/villa2.jpg", "/hero-bg.png", "/villa3.webp"]
+        heroImage: "/architecture.jpg",
+        gallery: ["/architecture.jpg"]
     },
     {
-        slug: "interior-design",
-        title: "Interior Design",
-        description: "We create elegant, functional interiors that reflect your lifestyle and personal taste.",
+        slug: "civil-and-environmental",
+        title: "Civil and Environmental",
+        description: "Civil Engineering Solutions That Build Strong Foundations",
+        icon: MapPin,
+        letter: "C",
+        fullDescription: "K&C Design provides professional site and infrastructure planning services to support residential, commercial, and mixed-use developments across multiple U.S. states. Our civil engineering team evaluates site constraints early to help reduce risk, control costs, and streamline approvals.",
+        quote: {
+            text: "Balancing grading, utilities, and regulatory requirements with operational goals.",
+            author: "K&C Design Team"
+        },
+        features: [
+            "Site feasibility and due-diligence studies",
+            "Grading and drainage design",
+            "Stormwater management and hydrology",
+            "Utility design and coordination",
+            "Roadway, access, and pavement design",
+            "Environmental and regulatory permitting"
+        ],
+        faqs: [
+            {
+                question: "How do you handle stormwater management?",
+                answer: "We deliver solutions that meet local, state, and federal requirements, including runoff analysis, detention system design, and floodplain coordination."
+            },
+            {
+                question: "Do you provide erosion control plans?",
+                answer: "Yes, we prepare accurate erosion and sediment control plans as part of our environmental permitting services."
+            }
+        ],
+        heroImage: "/civil_service.jpg",
+        gallery: ["/civil_service.jpg"]
+    },
+    {
+        slug: "structural",
+        title: "Structural",
+        description: "Reliable Structural Engineering for Safe, Efficient, and Durable Buildings",
+        icon: Box,
+        letter: "S",
+        fullDescription: "K&C Design provides professional structural engineering services for residential, commercial, industrial, and institutional projects across multiple U.S. states. Based in Georgia, our structural engineers deliver practical, code-compliant designs that support architectural intent while ensuring safety, constructability, and long-term performance.",
+        quote: {
+            text: "Engineering systems designed for performance, longevity, and safety.",
+            author: "K&C Design Team"
+        },
+        features: [
+            "New building structural design (Steel, Concrete, Wood)",
+            "Shallow and deep foundation systems",
+            "Seismic, wind, and structural analysis",
+            "Existing building evaluation and adaptive reuse",
+            "Retrofit, strengthening, and restoration",
+            "Emergency and forensic structural engineering"
+        ],
+        faqs: [
+            {
+                question: "Do you work with specialized industrial systems?",
+                answer: "Yes, we have experience with equipment supports, monorails, jib cranes, and vibration-sensitive structure design."
+            },
+            {
+                question: "Can you evaluate existing building capacity?",
+                answer: "Absolutely. We provide assessments for renovations, additions, and change-of-occupancy requirements."
+            }
+        ],
+        heroImage: "/structural.webp",
+        gallery: ["/structural.webp"]
+    },
+    {
+        slug: "interior",
+        title: "Interior",
+        description: "Thoughtful Interior Design That Balances Function, Aesthetics, and Code",
         icon: Palette,
         letter: "I",
-        fullDescription: "Interior design is about creating harmony and balance within a space. We focus on textures, lighting, and layout to ensure every room feels inviting and purposeful, reflecting your unique personality through curated materials and bespoke furniture.",
+        fullDescription: "K&C Design provides professional interior design services for commercial, residential, and institutional projects across multiple U.S. states. Based in Georgia, our team delivers functional, code-compliant, and visually cohesive interior environments that support how spaces are used, maintained, and experienced.",
         quote: {
-            text: "Design is thinking made visual.",
-            author: "Saul Bass"
+            text: "Interiors that are both practical and visually refined, starting with listening.",
+            author: "K&C Design Team"
         },
         features: [
-            "Custom furniture and lighting design",
-            "Space planning and ergonomic optimization",
-            "Expert material and finish selection"
+            "Programming and needs assessment",
+            "Space planning and layout optimization",
+            "Finish material selection and FF&E",
+            "Custom millwork detailing",
+            "Accessibility and ADA-compliant design",
+            "Commercial and institutional interior expertise"
         ],
         faqs: [
             {
-                question: "Do you handle the delivery and installation?",
-                answer: "Yes, we manage the entire process from sourcing to final installation."
+                question: "Do you handle commercial renovations?",
+                answer: "Yes, we have extensive experience in corporate, healthcare, educational, and public-use interior design."
             },
             {
-                question: "Can you work with my existing furniture?",
-                answer: "Absolutely, we can integrate your cherished pieces into a fresh, cohesive design."
+                question: "How do you ensure code compliance?",
+                answer: "We integrate accessibility and life-safety considerations into every stage of our interior design process."
             }
         ],
-        heroImage: "/hero-bg.png",
-        gallery: ["/about-villa.png", "/villa2.jpg", "/villa3.webp"]
+        heroImage: "/interior.jpg",
+        gallery: ["/interior.jpg", ]
     },
     {
-        slug: "3d-modelling",
-        title: "3D Modelling",
-        description: "High-quality 3D modelling solutions for architecture, interiors, exterior, design and products.",
-        icon: Box,
+        slug: "mep-engineering",
+        title: "MEP Engineering",
+        description: "Integrated Mechanical, Electrical & Plumbing Engineering Solutions",
+        icon: Zap,
         letter: "M",
-        fullDescription: "Our 3D modelling services bring your vision to life before the first stone is laid. We use cutting-edge technology to create realistic visualizations that help in making informed design decisions and communicating complex spatial ideas.",
+        fullDescription: "K&C Design provides professional MEP engineering services for commercial, residential, industrial, and institutional projects across multiple U.S. states. Based in Georgia, our MEP engineers deliver efficient, code-compliant, and coordinated system designs that support building performance, occupant comfort, and long-term reliability.",
         quote: {
-            text: "Visualizing the future is the first step to building it.",
-            author: "Unknown"
+            text: "Efficient systems designed to minimize conflicts and reduce construction changes.",
+            author: "K&C Design Team"
         },
         features: [
-            "Photorealistic renderings and animations",
-            "Virtual reality walkthroughs",
-            "Precise scale modelling for construction"
+            "HVAC and ventilation system design",
+            "Electrical power distribution and lighting",
+            "Plumbing and fire suppression systems",
+            "Energy efficiency and IAQ evaluations",
+            "MEP coordination and BIM integration",
+            "Telecommunications and security systems"
         ],
         faqs: [
             {
-                question: "What file formats do you provide?",
-                answer: "We provide files in all major 3D and image formats, including OBJ, STL, and high-res PNGs."
+                question: "Do you use BIM for system coordination?",
+                answer: "Yes, we utilize BIM and 3D coordination tools for clash detection and routing optimization."
             },
             {
-                question: "How detailed are your models?",
-                answer: "We can provide models ranging from massing studies to fully detailed, textured interiors."
+                question: "What mechanical services do you offer?",
+                answer: "Our services include HVAC design, hydronic systems, gray water reuse, and medical gas system coordination."
             }
         ],
-        heroImage: "/villa2.jpg",
-        gallery: ["/villa3.webp", "/hero-bg.png", "/about-villa.png"]
+        heroImage: "/mep1.jpg",
+        gallery: ["/mep1.jpg","/mep2.jpg","/mep3.jpg"]
     },
     {
-        slug: "decor-plan",
-        title: "Decor Plan",
-        description: "Creative decor plans that balance style, comfort and functional harmony.",
-        icon: Sofa,
-        letter: "D",
-        fullDescription: "A decor plan is the finishing touch that transforms a house into a home. We curate art, accessories, and textiles to bring warmth and character to your spaces, ensuring every element works in harmony with your overall aesthetic.",
+        slug: "landscape",
+        title: "Landscape",
+        description: "Integrated Landscape Architecture for Functional and Sustainable Sites",
+        icon: Leaf,
+        letter: "L",
+        fullDescription: "K&C Design provides professional landscape architecture services for residential, commercial, institutional, and mixed-use projects across multiple U.S. states. Based in Georgia, our landscape architects work closely with civil engineers, architects, and planners to deliver creative, cost-effective, and environmentally responsible site designs.",
         quote: {
-            text: "Decorating is not about making stage sets, it's about creating a quality of life.",
-            author: "Albert Hadley"
+            text: "Creative site designs that enhance usability, aesthetics, and performance.",
+            author: "K&C Design Team"
         },
         features: [
-            "Curated art and accessory selection",
-            "Custom window treatments and textiles",
-            "Seasonal and holiday decor planning"
+            "Site master planning and feasibility analysis",
+            "Hardscape and softscape design",
+            "Sustainable and low-impact design strategies",
+            "Bio-engineering and green infrastructure",
+            "Native and adaptive planting strategies",
+            "Permitting and regulatory coordination"
         ],
         faqs: [
             {
-                question: "How do you start a decor plan?",
-                answer: "We start with a style consultation to understand your preferences and existing pieces."
+                question: "Do you design irrigation systems?",
+                answer: "Yes, we provide landscape design and coordinate irrigation system design for long-term site health."
             },
             {
-                question: "Can you help me choose an art collection?",
-                answer: "Yes, we help source and curate art that resonates with you and your space."
+                question: "Can you handle sensitive environmental areas?",
+                answer: "Yes, our team is experienced in designing for environmentally-sensitive areas and ensuring regulatory compliance."
+            }
+        ],
+        heroImage: "/landscape.webp",
+        gallery: [ "/landscape.webp"]
+    },
+    {
+        slug: "fire-protection",
+        title: "Fire Protection",
+        description: "Comprehensive Fire Protection & Life Safety Solutions",
+        icon: Shield,
+        letter: "F",
+        fullDescription: "K&C Design provides professional fire protection engineering services for commercial, residential, industrial, and institutional projects across multiple U.S. states. Based in Georgia, our fire protection engineers deliver code-compliant, coordinated, and reliable fire protection systems that support life safety, property protection, and regulatory approval.",
+        quote: {
+            text: "System designs tailored to building use, occupancy, and rigorous safety codes.",
+            author: "K&C Design Team"
+        },
+        features: [
+            "Automatic fire sprinkler and standpipe design",
+            "Fire alarm and detection system layout",
+            "Fire and life safety code analysis",
+            "Hazard classification and water supply analysis",
+            "Smoke and heat detection coordination",
+            "Performance-based fire protection analysis"
+        ],
+        faqs: [
+            {
+                question: "Do you coordinate with authorities having jurisdiction (AHJs)?",
+                answer: "Yes, we work closely with AHJs to ensure all systems meet local fire and life safety requirements."
+            },
+            {
+                question: "Can you evaluate existing fire protection systems?",
+                answer: "Yes, we assess existing systems for change-of-occupancy and phased construction needs."
+            }
+        ],
+        heroImage: "/fire.jpg",
+        gallery: ["/fire.jpg"]
+    },
+    {
+        slug: "3d-modeling-and-bim",
+        title: "3D Modeling & BIM",
+        description: "Advanced 3D Modeling & Building Information Modeling (BIM)",
+        icon: Layers,
+        letter: "B",
+        fullDescription: "K&C Design provides professional 3D modeling and BIM services for architectural, structural, MEP, and interior projects across multiple U.S. states. Based in Georgia, we leverage the latest digital design tools to improve coordination, reduce errors, and enhance visualization throughout all project phases.",
+        quote: {
+            text: "Leveraging digital tools to ensure designs are accurate, constructible, and fully integrated.",
+            author: "K&C Design Team"
+        },
+        features: [
+            "BIM coordination and clash detection",
+            "Photorealistic renderings and visualization",
+            "4D scheduling and sequencing support",
+            "As-built model generation",
+            "3D scanning and point cloud integration",
+            "Modeling for prefabrication and constructability"
+        ],
+        faqs: [
+            {
+                question: "How does BIM benefit my project?",
+                answer: "BIM reduces design conflicts, minimizes change orders, and improves coordination between all disciplines."
+            },
+            {
+                question: "Do you offer visualization services?",
+                answer: "Yes, we provide high-quality renderings and simulations to explore materials, finishes, and layouts contextually."
             }
         ],
         heroImage: "/villa3.webp",
-        gallery: ["/villa2.jpg", "/about-villa.png", "/hero-bg.png"]
-    },
-    {
-        slug: "kitchen-design",
-        title: "Kitchen Design",
-        description: "Transforming everyday cooking with elegant modern and functional kitchen design.",
-        icon: UtensilsCrossed,
-        letter: "K",
-        fullDescription: "The kitchen is the heart of the home. Our kitchen decisions prioritize workflow, storage efficiency, and durability without compromising on the elegant look that defines our signature style.",
-        quote: {
-            text: "The kitchen is where life happens.",
-            author: "Unknown"
-        },
-        features: [
-            "Ergonomic workflow planning",
-            "Bespoke cabinetry and island design",
-            "Premium appliance integration"
-        ],
-        faqs: [
-            {
-                question: "What are the most durable materials for countertops?",
-                answer: "We often recommend quartz, granite, or high-end porcelains for their durability and lack of maintenance."
-            },
-            {
-                question: "How do you optimize small kitchens?",
-                answer: "We use smart storage solutions and prioritize essential zones to maximize every inch."
-            }
-        ],
-        heroImage: "/about-villa.png",
-        gallery: ["/villa3.webp", "/villa2.jpg", "/hero-bg.png"]
-    },
-    {
-        slug: "bathroom-design",
-        title: "Bathroom Design",
-        description: "Elevating daily routines with timeless, modern and elegant bathroom design.",
-        icon: Bath,
-        letter: "B",
-        fullDescription: "We design bathrooms as personal sanctuaries. By combining luxurious materials, precise lighting, and innovative fixtures, we create spaces where you can relax and rejuvenate in style.",
-        quote: {
-            text: "The bathroom should be a place of relaxation and renewal.",
-            author: "Unknown"
-        },
-        features: [
-            "Spa-like fixtures and wet-room designs",
-            "Custom vanity and storage solutions",
-            "Advanced lighting and ventilation planning"
-        ],
-        faqs: [
-            {
-                question: "Can you install a steam shower?",
-                answer: "Yes, we can integrate steam systems and other spa features into your design."
-            },
-            {
-                question: "How do you handle lighting in wet areas?",
-                answer: "We use IP-rated fixtures and layer lighting to provide both task and mood illumination safely."
-            }
-        ],
-        heroImage: "/hero-bg.png",
         gallery: ["/about-villa.png", "/villa2.jpg", "/villa3.webp"]
     }
 ];

@@ -3,48 +3,59 @@
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Home, Palette, Box, ArrowUpRight, Sofa, UtensilsCrossed, Bath } from "lucide-react";
+import { Home, MapPin, Box, Palette, Zap, Leaf, Shield, Layers, ArrowUpRight } from "lucide-react";
 import SectionHeader from "../ui/section-header";
 import { useCursorPositionShift } from "@/hooks/use-cursor-position-shift";
 import { cn } from "@/lib/cn";
 
 const services = [
     {
-        slug: "architecture",
-        title: "Architecture",
-        description: "Architectural designs that balance aesthetics, interior, function and innovative thinking.",
+        slug: "architectural",
+        title: "Architectural",
+        description: "Architecture Built on Precision, Compliance, and Vision",
         icon: Home,
     },
     {
-        slug: "interior-design",
-        title: "Interior design",
-        description: "We create elegant, functional interiors that reflect your lifestyle and personal taste.",
+        slug: "civil-and-environmental",
+        title: "Civil and Environmental",
+        description: "Civil Engineering Solutions That Build Strong Foundations",
+        icon: MapPin,
+    },
+    {
+        slug: "structural",
+        title: "Structural",
+        description: "Reliable Structural Engineering for Safe, Efficient, and Durable Buildings",
+        icon: Box,
+    },
+    {
+        slug: "interior",
+        title: "Interior",
+        description: "Thoughtful Interior Design That Balances Function, Aesthetics, and Code",
         icon: Palette,
     },
     {
-        slug: "3d-modelling",
-        title: "3D modelling",
-        description: "High-quality 3D modelling solutions for architecture, interiors, exterior, design and products.",
-        icon: Box,
-    },
-
-    {
-        slug: "decor-plan",
-        title: "Decor plan",
-        description: "Creative decor plans that balance style, comfort and functional harmony.",
-        icon: Sofa,
+        slug: "mep-engineering",
+        title: "MEP Engineering",
+        description: "Integrated Mechanical, Electrical & Plumbing Engineering Solutions",
+        icon: Zap,
     },
     {
-        slug: "kitchen-design",
-        title: "Kitchen design",
-        description: "Transforming everyday cooking with elegant modern and functional kitchen design.",
-        icon: UtensilsCrossed,
+        slug: "landscape",
+        title: "Landscape",
+        description: "Integrated Landscape Architecture for Functional and Sustainable Sites",
+        icon: Leaf,
     },
     {
-        slug: "bathroom-design",
-        title: "Bathroom design",
-        description: "Elevating daily routines with timeless, modern and elegant bathroom design.",
-        icon: Bath,
+        slug: "fire-protection",
+        title: "Fire Protection",
+        description: "Comprehensive Fire Protection & Life Safety Solutions",
+        icon: Shield,
+    },
+    {
+        slug: "3d-modeling-and-bim",
+        title: "3D Modeling & BIM",
+        description: "Advanced 3D Modeling & Building Information Modeling (BIM)",
+        icon: Layers,
     },
 ];
 
@@ -119,7 +130,7 @@ export default function ServicesSection() {
                             <div
                                 key={index}
                                 data-cursor="drag"
-                                className="group relative flex-shrink-0 w-[95vw] md:w-[420px] aspect-[4/3] p-10 md:p-12 bg-[#202020] border border-white/[0.03] transition-all duration-500 flex flex-col gap-10 overflow-hidden hover:bg-[#141414] cursor-none"
+                                className="group relative flex-shrink-0 w-[95vw] md:w-[450px] aspect-[4/3] p-10 md:p-12 bg-[#202020] border border-white/[0.03] transition-all duration-500 flex flex-col gap-10 overflow-hidden hover:bg-[#141414] cursor-none"
                             >
                                 <Link 
                                     href={`/services/${service.slug}`}

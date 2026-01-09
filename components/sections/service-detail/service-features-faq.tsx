@@ -24,7 +24,7 @@ export default function ServiceFeaturesFAQ({ features, faqs }: {
                                     <div className="mt-1">
                                         <Check className="w-4 h-4 text-primary" />
                                     </div>
-                                    <span className="text-white/40 text-lg group-hover:text-white/70 transition-colors duration-300 italic">
+                                    <span className="text-white/40 text-md group-hover:text-white/70 transition-colors duration-300 ">
                                         {feature}
                                     </span>
                                 </li>
