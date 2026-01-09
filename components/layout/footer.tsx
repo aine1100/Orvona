@@ -11,11 +11,12 @@ const socialLinks = [
 
 // Navigation links data
 const footerLinks = [
-    { label: "Home", href: "#hero" },
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Portfolio", href: "#portfolio" },
-    { label: "Contact", href: "#contact" },
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "Team", href: "/team" },
+    { label: "Portfolio", href: "/portfolio" },
+    { label: "Contact", href: "/contact" },
 ];
 
 export default function Footer() {

@@ -28,10 +28,10 @@ export default function FounderSection() {
                 </div>
 
                 {/* Content Grid */}
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-stretch">
 
                     {/* Left: Image */}
-                    <div className="relative aspect-[4/5] rounded-sm overflow-hidden border border-white/5 shadow-2xl group">
+                    <div className="relative min-h-[400px] lg:min-h-full rounded-sm overflow-hidden border border-white/5 shadow-2xl group">
                         <Image
                             src="/chad_spink.png"
                             alt="Founder of K&C Design"
