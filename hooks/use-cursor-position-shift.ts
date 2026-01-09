@@ -61,12 +61,14 @@ export function useCursorPositionShift<T extends HTMLElement, U extends HTMLElem
       if (e.button !== 0) return;
       
       setIsDragging(true);
+      document.body.style.userSelect = "none";
       const isHorizontal = direction === "horizontal";
       lastMousePos.current = isHorizontal ? e.clientX : e.clientY;
     };
 
     const handleMouseUp = () => {
       setIsDragging(false);
+      document.body.style.userSelect = "";
     };
 
     const handleMouseEnter = () => {

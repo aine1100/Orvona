@@ -26,7 +26,7 @@ export default function ServiceGallery({ images }: { images: string[] }) {
                                 src={image}
                                 alt={`Gallery image ${idx + 1}`}
                                 fill
-                                quality={90}
+                                quality={100}
                                 sizes="(max-w-[768px]) 100vw, (max-w-[1200px]) 50vw, 33vw"
                                 className="object-cover w-full transition-transform duration-700 group-hover:scale-110"
                             />

@@ -6,6 +6,7 @@ import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import ServiceHero from "@/components/sections/service-detail/service-hero";
 import ServiceContent from "@/components/sections/service-detail/service-content";
+import ServiceSubServices from "@/components/sections/service-detail/service-sub-services";
 import ServiceGallery from "@/components/sections/service-detail/service-gallery";
 import ServiceFeaturesFAQ from "@/components/sections/service-detail/service-features-faq";
 import ServiceNavigation from "@/components/sections/service-detail/service-navigation";
@@ -42,6 +43,10 @@ export default function ServiceDetailPage() {
                 description={service.fullDescription}
                 quote={service.quote}
             />
+
+            {service.subServices && (
+                <ServiceSubServices subServices={service.subServices} />
+            )}
 
             <ServiceGallery images={service.gallery} />
 
