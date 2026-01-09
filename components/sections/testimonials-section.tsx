@@ -188,12 +188,7 @@ export default function TestimonialsSection() {
         }
       `}</style>
       
-      {/* Large Watermark Text */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <h2 className="text-[clamp(8rem,20vw,24rem)] font-bold text-white/[0.03] select-none tracking-tighter leading-none">
-          K&C DESIGN
-        </h2>
-      </div>
+     
 
       {/* Main Content */}
       <div className="relative z-10 w-full max-w-[1600px] mx-auto px-8 lg:px-16 py-20">

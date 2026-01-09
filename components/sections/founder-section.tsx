@@ -63,22 +63,7 @@ export default function FounderSection() {
                         </div>
 
                         {/* Core Values List */}
-                        <ul className="grid grid-cols-2 gap-x-8 gap-y-4">
-                            {[
-                                "Personal attention",
-                                "Clear communication",
-                                "Team-based coordination",
-                                "Quality control",
-                                "Practical solutions",
-                                "Client engagement"
-                            ].map((benefit, index) => (
-                                <li key={index} className="flex items-center gap-3">
-                                    <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                                    <span className="text-white/60 text-xs md:text-sm uppercase tracking-wide">{benefit}</span>
-                                </li>
-                            ))}
-                        </ul>
-
+                        
                         {/* Signature */}
                         <div className="pt-8 border-t border-white/10 flex items-center justify-between">
                             <div>

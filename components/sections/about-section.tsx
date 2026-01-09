@@ -37,27 +37,12 @@ export default function AboutSection() {
 
                         <div className="flex flex-col gap-6 text-white/60 text-sm md:text-base leading-relaxed max-w-2xl">
                             <p>
-                                K&C Design is a multidisciplinary design and engineering firm based in Georgia, providing architecture, engineering, and consulting services to clients across multiple U.S. states. Our firm delivers fully integrated design solutions by bringing architecture, civil, structural, MEP, fire protection, interior design, landscape architecture, and 3D modeling services under one coordinated team.
-                            </p>
-                            <p>
-                                When you work with K&C Design, you gain a single-source design partner focused on clarity, efficiency, and regulatory compliance from concept through construction.
+                                K&C Design is a Georgia-based multidisciplinary design and engineering firm providing integrated architecture, engineering, and consulting services for projects across multiple U.S. states.
+                                Our team delivers coordinated, code-compliant, and construction-ready solutions by bringing architecture, civil, structural, MEP, fire protection, interior design, landscape architecture, and 3D modeling under one roof. From concept through permitting and construction, we focus on clarity, efficiency, and responsive project delivery.
+                                Serving clients nationwide, K&C Design is committed to practical design solutions that balance performance, compliance, and buildability.
                             </p>
                         </div>
 
-                                <ul className="flex flex-col gap-4">
-                                    {[
-                                        "Bespoke interior solutions.",
-                                        "Modern and timeless design vision.",
-                                        "Design that tells your story.",
-                                    ].map((item, i) => (
-                                        <li key={i} className="flex items-center gap-4 text-sm md:text-base font-medium text-white/80">
-                                            <div className="flex-shrink-0 w-5 h-5 flex items-center justify-center">
-                                                <Check className="w-4 h-4 text-primary" strokeWidth={3} />
-                                            </div>
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
 
 
                         <div className="mt-8 flex flex-wrap gap-12 items-center">
