@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Check } from "lucide-react";
 import Button from "@/components/ui/button/button";
 import { useRouter } from "next/navigation";
+import SectionHeader from "../ui/section-header";
 
 export default function AboutSection() {
     const router = useRouter()
@@ -14,16 +15,7 @@ export default function AboutSection() {
 
             <div className="max-w-[1400px] mx-auto">
                 {/* Header Label */}
-                <div className="flex items-center gap-6 mb-16 lg:mb-24">
-                    <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-xs font-bold tracking-widest text-white/40">
-                        A
-                    </div>
-                    <div className="relative flex-1 h-px bg-white/10">
-                        <span className="absolute top-4 left-0 text-[10px] md:text-[11px] font-bold tracking-[0.4em] text-white uppercase">
-                            ABOUT.
-                        </span>
-                    </div>
-                </div>
+               <SectionHeader title="ABOUT." letter="A" />
 
                 <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
                     {/* Left Content */}
