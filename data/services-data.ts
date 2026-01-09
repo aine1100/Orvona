@@ -89,10 +89,7 @@ export const servicesData: ServiceDetail[] = [
                     "Tenant improvements",
                     "Building expansions and additions"
                 ]
-            
-            },
-           
-            
+            }
         ],
         quote: {
             text: "Practical design solutions focused on buildability and clear communication.",

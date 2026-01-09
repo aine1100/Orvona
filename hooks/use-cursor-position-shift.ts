@@ -77,10 +77,6 @@ export function useCursorPositionShift<T extends HTMLElement, U extends HTMLElem
 
     const handleMouseLeave = () => {
       setIsHovering(false);
-      // Snap back to initial only if NOT actively dragging
-      if (!isDragging) {
-        targetShift.current = initialValue;
-      }
     };
 
     // Container specific listeners
