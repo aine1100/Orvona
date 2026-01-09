@@ -18,7 +18,7 @@ export default function FounderSection() {
             <div className="max-w-[1400px] mx-auto px-6 sm:px-12 md:px-16 lg:px-24">
 
                 {/* Header */}
-                <SectionHeader title="Founder" letter="."/>
+                <SectionHeader title="Founder." letter="F"/>
 
                 {/* Content Grid */}
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-stretch">
