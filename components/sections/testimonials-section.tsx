@@ -6,38 +6,65 @@ import { cn } from "@/lib/cn";
 
 const testimonials = [
   {
-    text: "A seamless design journey from start to finish. Every detail was thoughtfully planned and perfectly executed.",
-    author: "Emily Collins",
-    role: "Interior Consultant",
+    text: "Creative, practical, and well-coordinated. The architectural team translated our vision into a functional and beautiful design.",
+    author: "James Lee",
+    role: "Architectural Client",
     avatar: "/about-villa.png",
     rating: 5,
   },
   {
-    text: "They transformed our space beyond expectations. Elegant and truly timeless design work throughout.",
-    author: "Martin Dan",
-    role: "Real Estate Developer",
+    text: "The civil engineering team handled site planning and drainage efficiently, keeping the project compliant and on schedule.",
+    author: "Tirrell Summers",
+    role: "Property Developer",
     avatar: "/about-villa.png",
     rating: 5,
   },
   {
-    text: "Working with Ornava transformed our home into a masterpiece. The attention to detail was extraordinary.",
-    author: "Marcus Chen",
-    role: "Entrepreneur",
+    text: "Clear structural solutions and excellent coordination with other trades. The plans were solid and easy to build from.",
+    author: "Michael Derby",
+    role: "Construction Manager",
     avatar: "/about-villa.png",
     rating: 5,
   },
+  {
+    text: "The MEP design was thorough and well-integrated, helping avoid conflicts and streamline construction.",
+    author: "Josh Anderson",
+    role: "General Contractor",
+    avatar: "/about-villa.png",
+    rating: 5,
+  },
+  {
+    text: "Professional and code-compliant fire protection design that passed reviews smoothly and without delays.",
+    author: "Jimmy Polpeka",
+    role: "Life Safety Consultant",
+    avatar: "/about-villa.png",
+    rating: 5,
+  },
+  {
+    text: "Thoughtful interior design that balanced aesthetics and functionality perfectly. The spaces feel both refined and practical.",
+    author: "Sarah Bolinder",
+    role: "Interior Client",
+    avatar: "/about-villa.png",
+    rating: 5,
+  },
+  {
+    text: "The landscape design complemented the building beautifully while remaining functional and low maintenance.",
+    author: "Kao Saechao",
+    role: "Landscape Client",
+    avatar: "/about-villa.png",
+    rating: 5,
+  }
 ];
 
 const marqueeItems = [
-  "urban style",
-  "open concept",
-  "material selection",
-  "interior design",
-  "architecture",
-  "minimalist",
-  "modern living",
-  "space planning",
-  "lighting design",
+  "Architectural Design",
+  "Civil Engineering",
+  "Structural Engineering",
+  "MEP Engineering",
+  "Fire Protection",
+  "Interior Design",
+  "Landscape Architecture",
+  "3D Modeling & BIM",
 ];
 import Image from "next/image";
 
@@ -164,7 +191,7 @@ export default function TestimonialsSection() {
       {/* Large Watermark Text */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <h2 className="text-[clamp(8rem,20vw,24rem)] font-bold text-white/[0.03] select-none tracking-tighter leading-none">
-          ORNAVA
+          K&C DESIGN
         </h2>
       </div>
 

@@ -28,57 +28,72 @@ export default function FounderSection() {
                 </div>
 
                 {/* Content Grid */}
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
 
                     {/* Left: Image */}
-                    <div className="relative aspect-[4/3] rounded-md overflow-hidden">
+                    <div className="relative aspect-[4/5] rounded-sm overflow-hidden border border-white/5 shadow-2xl group">
                         <Image
-                            src="/about-villa.png"
-                            alt="Founder at work"
+                            src="/chad_spink.png"
+                            alt="Founder of K&C Design"
                             fill
-                            className="object-cover"
+                            className="object-cover transition-transform duration-700 group-hover:scale-105"
                         />
+                        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
                     </div>
 
                     {/* Right: Content */}
-                    <div className="relative">
-
-                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium text-white mb-6 leading-tight">
-                            CREATIVE VISION<br />BEHIND THE DESIGN
-                        </h2>
+                    <div className="relative flex flex-col gap-8">
+                        <div>
+                            <span className="text-primary text-[10px] md:text-[11px] font-bold tracking-[0.3em] uppercase block mb-4">
+                                Personal Commitment
+                            </span>
+                            <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium text-white leading-tight uppercase">
+                                Designing Your Vision <br /> with K&C Design
+                            </h2>
+                        </div>
 
                         {/* Description */}
-                        <p className="text-muted text-base leading-relaxed mb-8">
-                            Driven by a passion for design, our founder merges creativity with function to craft inspiring spaces.
-                        </p>
+                        <div className="flex flex-col gap-6 text-white/50 text-[15px] leading-relaxed italic border-l-2 border-primary/30 pl-8 py-2">
+                            <p>
+                                “At K&C Design, our mission is simple: to provide integrated, high-quality design and engineering solutions that bring our clients’ visions to life. From architecture and civil engineering to MEP, fire protection, interior design, and landscape architecture, we coordinate every aspect of your project under one roof to ensure clarity, efficiency, and exceptional results."
+                            </p>
+                            <p>
+                                "Whether it’s a new building, a renovation, or an expansion, our team works closely with you through every phase—from concept and permitting to construction and completion. We don’t just design buildings—we create spaces that inspire, perform, and stand the test of time.”
+                            </p>
+                        </div>
 
-                        {/* Benefits List (Mapping) */}
-                        <ul className="space-y-4 mb-10">
-                            {founderBenefits.map((benefit, index) => (
-                                <li key={index} className="flex items-start gap-3">
-                                    <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                                    <span className="text-muted text-sm">{benefit}</span>
+                        {/* Core Values List */}
+                        <ul className="grid grid-cols-2 gap-x-8 gap-y-4">
+                            {[
+                                "Personal attention",
+                                "Clear communication",
+                                "Team-based coordination",
+                                "Quality control",
+                                "Practical solutions",
+                                "Client engagement"
+                            ].map((benefit, index) => (
+                                <li key={index} className="flex items-center gap-3">
+                                    <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                                    <span className="text-white/60 text-xs md:text-sm uppercase tracking-wide">{benefit}</span>
                                 </li>
                             ))}
                         </ul>
 
                         {/* Signature */}
-                        <div className="border-t border-white/10 pt-6">
-                            <p className="text-xs text-muted mb-2">Creative Director</p>
-                            <div className="flex items-center gap-4">
-                                {/* Signature SVG placeholder - you can replace with actual signature */}
-                                <svg className="h-8 w-24 text-primary" viewBox="0 0 100 40" fill="none">
-                                    <path
-                                        d="M10 30 Q 20 10, 40 25 T 80 20"
-                                        stroke="currentColor"
-                                        strokeWidth="1.5"
-                                        strokeLinecap="round"
-                                    />
-                                </svg>
-                                <p className="text-white font-medium">Martin H. Dan</p>
+                        <div className="pt-8 border-t border-white/10 flex items-center justify-between">
+                            <div>
+                                <h4 className="text-white font-medium text-lg tracking-tight">Chad Spink</h4>
+                                <p className="text-[10px] text-white/30 uppercase tracking-[0.2em] mt-1">Owner, K&C Design</p>
                             </div>
+                            <svg className="h-10 w-28 text-primary opacity-60" viewBox="0 0 100 40" fill="none">
+                                <path
+                                    d="M10 30 Q 20 10, 40 25 T 80 20"
+                                    stroke="currentColor"
+                                    strokeWidth="1.5"
+                                    strokeLinecap="round"
+                                />
+                            </svg>
                         </div>
-
                     </div>
 
                 </div>

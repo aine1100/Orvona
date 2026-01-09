@@ -48,12 +48,12 @@ export default function Footer() {
                             <div className="w-8 h-8 md:w-10 md:h-10 border border-primary/50 flex items-center justify-center p-1 group-hover:border-primary transition-colors">
                                 <Mountain className="w-5 h-5 md:w-6 md:h-6 text-primary" strokeWidth={1.5} />
                             </div>
-                            <span className="text-2xl font-medium tracking-wide">ORNAVA</span>
+                            <span className="text-2xl font-medium tracking-wide">K&C DESIGN</span>
                         </div>
 
                         {/* Description */}
                         <p className="text-muted text-sm leading-relaxed mb-8 max-w-md">
-                            Ornava designs timeless, functional spaces with aesthetic clarity and material harmony.
+                            Integrated architecture and engineering solutions delivering functional, efficient, and timeless spaces.
                         </p>
 
                         {/* Social Icons */}
@@ -93,7 +93,7 @@ export default function Footer() {
                         <div className="space-y-3 text-sm text-muted">
                             <p>0665 Broadway st, 10234 NY, USA</p>
                             <p>+1 123 567 8910</p>
-                            <p>design@ornava.com</p>
+                            <p>design@kcdesign.com</p>
                         </div>
                     </div>
 
@@ -117,7 +117,7 @@ export default function Footer() {
 
                     {/* Copyright */}
                     <p className="text-xs text-muted">
-                        Copyright 2026 by <span className="text-primary">Ornava</span>
+                        Copyright 2026 by <span className="text-primary">K&C DESIGN</span>
                     </p>
 
                 </div>

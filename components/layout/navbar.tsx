@@ -27,7 +27,7 @@ export default function Navbar() {
                     <div className="w-8 h-8 md:w-10 md:h-10 border border-primary/50 flex items-center justify-center p-1 group-hover:border-primary transition-colors">
                         <Mountain className="w-5 h-5 md:w-6 md:h-6 text-primary" strokeWidth={1.5} />
                     </div>
-                    <span className="text-base md:text-lg font-semibold tracking-[0.2em] md:tracking-[0.3em] text-white">ORNAVA</span>
+                    <span className="text-base md:text-lg font-semibold  text-white">K&C Design</span>
                 </div>
 
                 {/* Desktop Menu Links */}

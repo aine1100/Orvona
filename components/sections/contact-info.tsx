@@ -6,7 +6,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 const contactInfo = [
     {
         title: "E-mail address",
-        detail: "design@ornava.com",
+        detail: "design@kcdesign.com",
         icon: Mail,
         bgColor: "bg-surface",
     },

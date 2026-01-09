@@ -19,34 +19,34 @@ type TeamMember = {
 const teamMembers: TeamMember[] = [
   {
     id: 1,
-    name: "James Dan",
-    role: "Project Manager",
-    image: "/about-villa.png",
+    name: "Chad Spink",
+    role: "Founder",
+    image: "/chad_spink.png",
   },
-  {
-    id: 2,
-    name: "Sarah Chen",
-    role: "Interior Director",
-    image: "/about-villa.png",
-  },
-  {
-    id: 3,
-    name: "Marcus Reynolds",
-    role: "Lead Architect",
-    image: "/about-villa.png",
-  },
-  {
-    id: 4,
-    name: "Elena Rodriguez",
-    role: "Lighting Specialist",
-    image: "/about-villa.png",
-  },
-  {
-    id: 5,
-    name: "David Kim",
-    role: "3D Visualizer",
-    image: "/about-villa.png",
-  },
+  // {
+  //   id: 2,
+  //   name: "Sarah Chen",
+  //   role: "Interior Director",
+  //   image: "/about-villa.png",
+  // },
+  // {
+  //   id: 3,
+  //   name: "Marcus Reynolds",
+  //   role: "Lead Architect",
+  //   image: "/about-villa.png",
+  // },
+  // {
+  //   id: 4,
+  //   name: "Elena Rodriguez",
+  //   role: "Lighting Specialist",
+  //   image: "/about-villa.png",
+  // },
+  // {
+  //   id: 5,
+  //   name: "David Kim",
+  //   role: "3D Visualizer",
+  //   image: "/about-villa.png",
+  // },
 ];
 
 import { useCursorPositionShift } from "@/hooks/use-cursor-position-shift";
@@ -151,12 +151,13 @@ export default function TeamSection() {
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
           {/* Left Column */}
           <div className="lg:w-1/3 flex flex-col items-start gap-8 flex-shrink-0">
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-normal tracking-wide leading-tight uppercase">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-medium tracking-tight leading-tight uppercase">
               OUR DESIGN EXPERTS
             </h2>
-            <p className="text-white/40 text-lg leading-relaxed max-w-sm">
-              We develop aesthetic, functional and innovative design solutions with our team of experts.
+            <p className="text-white/40 text-[15px] leading-relaxed max-w-sm">
+              A collaborative team delivering thoughtful design, technical excellence, and reliable project execution.
             </p>
+           
             <div className="mt-4">
               <div className={cn(
                 "text-sm text-white/20 transition-opacity duration-500 font-medium tracking-wider uppercase",

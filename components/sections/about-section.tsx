@@ -3,8 +3,10 @@
 import Image from "next/image";
 import { Check } from "lucide-react";
 import Button from "@/components/ui/button/button";
+import { useRouter } from "next/navigation";
 
 export default function AboutSection() {
+    const router = useRouter()
     return (
         <section id="about" className="relative py-20 lg:py-32 px-6 sm:px-12 md:px-16 lg:px-24 bg-[#141414] text-white overflow-hidden">
             {/* Background/Layout Decor */}
@@ -17,7 +19,7 @@ export default function AboutSection() {
                         A
                     </div>
                     <div className="relative flex-1 h-px bg-white/10">
-                       <span className="absolute top-4 left-0 text-[10px] md:text-[11px] font-bold tracking-[0.4em] text-white uppercase">
+                        <span className="absolute top-4 left-0 text-[10px] md:text-[11px] font-bold tracking-[0.4em] text-white uppercase">
                             ABOUT.
                         </span>
                     </div>
@@ -25,36 +27,44 @@ export default function AboutSection() {
 
                 <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
                     {/* Left Content */}
-                    <div className="flex flex-col gap-8 md:gap-10">
-                        <h2 className="text-2xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-tight uppercase">
-                            BUILDING MODERN <br className="hidden md:block" /> DREAMS
-                        </h2>
+                    <div className="flex flex-col gap-10">
+                        <div className="flex flex-col gap-6">
+                            <h2 className="text-2xl md:text-3xl lg:text-5xl font-medium tracking-tight leading-tight uppercase">
+                                Integrated Design & Engineering Solutions
+                            </h2>
+                            <div className="w-20 h-1 bg-primary" />
+                        </div>
 
-                        <p className="text-muted text-sm md:text-base leading-relaxed max-w-xl">
-                            At Ornava, we merge creativity and functionality to design spaces
-                            that reflect your vision. We turn ordinary areas into extraordinary
-                            experiences, where every detail tells a story.
-                        </p>
+                        <div className="flex flex-col gap-6 text-white/60 text-sm md:text-base leading-relaxed max-w-2xl">
+                            <p>
+                                K&C Design is a multidisciplinary design and engineering firm based in Georgia, providing architecture, engineering, and consulting services to clients across multiple U.S. states. Our firm delivers fully integrated design solutions by bringing architecture, civil, structural, MEP, fire protection, interior design, landscape architecture, and 3D modeling services under one coordinated team.
+                            </p>
+                            <p>
+                                When you work with K&C Design, you gain a single-source design partner focused on clarity, efficiency, and regulatory compliance from concept through construction.
+                            </p>
+                        </div>
 
-                        <ul className="flex flex-col gap-4">
-                            {[
-                                "Bespoke interior solutions.",
-                                "Modern and timeless design vision.",
-                                "Design that tells your story.",
-                            ].map((item, i) => (
-                                <li key={i} className="flex items-center gap-4 text-sm md:text-base font-medium text-white/80">
-                                    <div className="flex-shrink-0 w-5 h-5 flex items-center justify-center">
-                                        <Check className="w-4 h-4 text-primary" strokeWidth={3} />
-                                    </div>
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
+                                <ul className="flex flex-col gap-4">
+                                    {[
+                                        "Bespoke interior solutions.",
+                                        "Modern and timeless design vision.",
+                                        "Design that tells your story.",
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-center gap-4 text-sm md:text-base font-medium text-white/80">
+                                            <div className="flex-shrink-0 w-5 h-5 flex items-center justify-center">
+                                                <Check className="w-4 h-4 text-primary" strokeWidth={3} />
+                                            </div>
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
 
-                        <div className="mt-4">
-                            <Button variant="outline" className="px-10 py-6 text-[10px] md:text-xs tracking-[0.2em]">
-                                READ MORE
+
+                        <div className="mt-8 flex flex-wrap gap-12 items-center">
+                            <Button variant="outline" className="px-10 py-6 text-[10px] md:text-xs tracking-[0.2em] uppercase" onClick={() => router.push("/about")}>
+                                Read More
                             </Button>
+
                         </div>
                     </div>
 
@@ -86,7 +96,7 @@ export default function AboutSection() {
                 </div>
             </div>
 
-           
+
         </section>
     );
 }
