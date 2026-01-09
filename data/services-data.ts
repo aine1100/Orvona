@@ -89,25 +89,13 @@ export const servicesData: ServiceDetail[] = [
                     "Tenant improvements",
                     "Building expansions and additions"
                 ]
+            
             },
             {
                 title: "Multi-State Design Experience",
-                description: "K&C Design provides architectural services across multiple jurisdictions, including but not limited to:",
-                items: [
-                    "Georgia, Florida, California, North Carolina, South Carolina, Washington, New York, Texas, Arizona, Illinois, Virginia, Missouri, Michigan, Minnesota"
-                ]
-            },
-            {
-                title: "Why Choose K&C Design",
-                description: "Our approach is built on reliability and expert communication.",
-                items: [
-                    "Multi-state permitting and code expertise",
-                    "Clear, coordinated, and construction-ready drawings",
-                    "Practical design solutions focused on buildability",
-                    "Strong communication with clients and reviewers",
-                    "Reliable turnaround and responsive project support"
-                ]
+                description: "K&C Design provides architectural services across multiple jurisdictions, including but not limited to: Georgia, Florida, California, North Carolina, South Carolina, Washington, New York, Texas, Arizona, Illinois, Virginia, Missouri, Michigan, Minnesota, and additional states as required by project scope and licensing requirements."
             }
+            
         ],
         quote: {
             text: "Practical design solutions focused on buildability and clear communication.",
@@ -422,6 +410,10 @@ export const servicesData: ServiceDetail[] = [
                     "Review of submittals and RFIs",
                     "Construction site observation support"
                 ]
+            },
+            {
+                title: "Client-Focused Design Approach",
+                description: "K&C Design takes a client-focused approach to interior design, combining technical expertise with a collaborative working style. Our goal is to create interiors that enhance user experience while meeting budget, schedule, and regulatory requirements."
             }
         ],
         quote: {
@@ -598,6 +590,10 @@ export const servicesData: ServiceDetail[] = [
                     "Landscape rehabilitation and enhancements",
                     "Site reconfiguration for redevelopment"
                 ]
+            },
+            {
+                title: "Integrated Design Approach",
+                description: "K&C Design’s landscape architects collaborate closely with civil, architectural, structural, and MEP teams, ensuring landscape designs are fully coordinated with grading, utilities, drainage, and accessibility requirements."
             }
         ],
         quote: {
@@ -688,6 +684,10 @@ export const servicesData: ServiceDetail[] = [
                     "High-hazard and industrial facility coordination",
                     "Integration with structural fire-resistance"
                 ]
+            },
+            {
+                title: "Integrated Coordination & BIM Support",
+                description: "K&C Design utilizes BIM and coordination tools to integrate fire protection systems with architectural and MEP designs, reducing conflicts during construction."
             }
         ],
         quote: {
