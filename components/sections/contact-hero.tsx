@@ -14,10 +14,9 @@ export default function ContactHero() {
             alt="Contact Us Background"
             fill
             priority
-            className="object-cover  w-full h-full object-top opacity-20"
+            className="object-cover  w-full h-full object-top opacity-80 "
           />
           {/* Subtle Overlay to make image even less visible */}
-          <div className="absolute inset-0 bg-black/40" />
         </div>
 
         {/* Text Content */}
