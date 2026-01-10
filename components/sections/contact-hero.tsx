@@ -2,11 +2,11 @@
 
 export default function ContactHero() {
   return (
-    <section className="relative h-[50vh] md:h-[60vh] w-full flex items-center justify-center overflow-hidden">
+    <section className="relative h-[50vh] md:h-[70vh] w-full flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url("/about-villa.png")' }}
+        style={{ backgroundImage: 'url("/contact_us.png")' }}
       >
         <div className="absolute inset-0 bg-black/70" />
       </div>

@@ -85,25 +85,25 @@ export default function TestimonialsSection() {
         setActiveIndex(next);
         setNextIndex(null);
       }, 1100);
-      
-    }, 5000); 
+
+    }, 5000);
     return () => clearInterval(interval);
   }, [activeIndex]);
 
   const renderContent = (index: number, state: 'active' | 'next') => {
     const testimonial = testimonials[index];
     const isNext = state === 'next';
-    
+
     return (
       <div
-        key={`${index}-${state}`} 
+        key={`${index}-${state}`}
         className={cn(
           "absolute inset-0 px-8 py-8 justify-center  flex flex-col gap-4", // Fill the static card
           // Base state
           !isNext && nextIndex !== null && "animate-[curtainOut_0.8s_ease-in-out_forwards]", // Outgoing
           isNext && "animate-[curtainIn_0.8s_ease-in-out_0.3s_backwards]", // Incoming (with delay)
           // Static state
-          state === 'active' && nextIndex === null && "translate-x-0 opacity-100" 
+          state === 'active' && nextIndex === null && "translate-x-0 opacity-100"
         )}
         style={{
           zIndex: isNext ? 20 : 10
@@ -111,20 +111,20 @@ export default function TestimonialsSection() {
       >
         {/* Quote Icon */}
         <div className="">
-          <svg 
-            width="64" 
-            height="64" 
-            viewBox="0 0 64 64" 
-            fill="none" 
+          <svg
+            width="64"
+            height="64"
+            viewBox="0 0 64 64"
+            fill="none"
             className="text-[#d4af6a]"
           >
-            <path 
-              d="M12 40C12 33.3726 17.3726 28 24 28V20C12.9543 20 4 28.9543 4 40V52H24V40H12Z" 
+            <path
+              d="M12 40C12 33.3726 17.3726 28 24 28V20C12.9543 20 4 28.9543 4 40V52H24V40H12Z"
               fill="currentColor"
               opacity="0.2"
             />
-            <path 
-              d="M40 40C40 33.3726 45.3726 28 52 28V20C40.9543 20 32 28.9543 32 40V52H52V40H40Z" 
+            <path
+              d="M40 40C40 33.3726 45.3726 28 52 28V20C40.9543 20 32 28.9543 32 40V52H52V40H40Z"
               fill="currentColor"
               opacity="0.2"
             />
@@ -187,39 +187,40 @@ export default function TestimonialsSection() {
           }
         }
       `}</style>
-      
-     
+
+
 
       {/* Main Content */}
-      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-8 lg:px-16 py-20">
-        <div className="relative flex items-center min-h-[600px]">
-          
+      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-8 lg:px-16 py-12 md:py-20">
+        <div className="relative flex flex-col md:flex-row items-center justify-center md:justify-start min-h-[600px] md:min-h-[500px] lg:min-h-[600px]">
+
           {/* Testimonial Card Container - STATIC NOW */}
-          <div className="relative z-20 md:-top-44 lg:left-20 w-full max-w-[400px] h-[320px] bg-[#1c1c1c] rounded-md shadow-2xl overflow-hidden"> 
-             {renderContent(activeIndex, 'active')}
-             {nextIndex !== null && renderContent(nextIndex, 'next')}
+          <div className="relative z-20  w-[300px] md:w-full max-w-[400px] min-h-[320px] bg-[#1c1c1c] rounded-md shadow-2xl overflow-hidden md:-top-32 lg:left-20">
+            {renderContent(activeIndex, 'active')}
+            {nextIndex !== null && renderContent(nextIndex, 'next')}
           </div>
 
 
-          {/* Image Block - Right Side with Overlap */}
-          <div className="absolute left-[280px] lg:left-[200px] right-0 top-0 bottom-0 h-full">
-            <div className="relative rounded-md w-full h-full lg:max-h-[550px] overflow-hidden group">
+          {/* Image Block - Right Side with Overlap (Background on mobile) */}
+          <div className="absolute  inset-0 md:inset-auto md:left-[280px] lg:left-[200px] md:right-0 md:top-0 md:bottom-0 h-full">
+            <div className="relative  rounded-none md:rounded-md w-full h-full lg:max-h-[550px] overflow-hidden group">
               <Image
                 src="/about-villa.png"
-                width={500}
-                height={300}
+                width={800} // Increased for background use
+                height={600}
                 alt="Modern interior design bedroom"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 bg-black/70"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
-              
-              {/* Watch Trailer Button */}
-              <div className="absolute bottom-16 right-16 z-20">
+              {/* Responsive Overlay */}
+              <div className="absolute inset-0 bg-black/60 md:bg-transparent md:bg-gradient-to-r md:from-black/40 md:to-transparent" />
+
+              {/* Watch Trailer Button - Hidden on small mobile to avoid clutter, visible on md+ */}
+              <div className="absolute bottom-8 right-8 md:bottom-16 md:right-16 z-20 hidden xs:block">
                 <button className="group/btn flex items-center gap-4 hover:gap-5 transition-all duration-300">
-                  <div className="relative w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover/btn:bg-[#d4af6a] group-hover/btn:border-[#d4af6a] transition-all duration-300">
-                    <Play className="w-5 h-5 text-white ml-0.5 fill-white" />
+                  <div className="relative w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover/btn:bg-[#d4af6a] group-hover/btn:border-[#d4af6a] transition-all duration-300">
+                    <Play className="w-4 h-4 md:w-5 md:h-5 text-white ml-0.5 fill-white" />
                   </div>
-                  <span className="text-base font-light tracking-wide text-white">
+                  <span className="text-sm md:text-base font-light tracking-wide text-white">
                     Watch the trailer
                   </span>
                 </button>
@@ -231,7 +232,7 @@ export default function TestimonialsSection() {
       </div>
 
       {/* Scrolling Marquee */}
-      <div className="absolute bottom-0 left-0 right-0 py-8 z-30 ">
+      <div className="absolute -bottom-2 md:bottom-0 left-0 right-0 py-8 z-30 ">
         <div className="flex whitespace-nowrap">
           <div className="flex animate-marquee">
             {[...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, index) => (
@@ -246,7 +247,7 @@ export default function TestimonialsSection() {
         </div>
       </div>
 
-      
+
 
     </section>
   );

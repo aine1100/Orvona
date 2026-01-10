@@ -1,7 +1,9 @@
 "use client";
 
-import { Instagram, Facebook, Mountain } from "lucide-react";
+import { Instagram, Facebook } from "lucide-react";
 import { cn } from "@/lib/cn";
+import Link from "next/link";
+import Image from "next/image";
 
 // Social links data
 const socialLinks = [
@@ -18,6 +20,8 @@ const footerLinks = [
     { label: "Portfolio", href: "/portfolio" },
     { label: "Contact", href: "/contact" },
 ];
+
+
 
 export default function Footer() {
     return (
@@ -45,9 +49,14 @@ export default function Footer() {
                     {/* Left: Brand & Social */}
                     <div>
                         {/* Logo */}
-                        <div className="flex items-center gap-3 mb-6">
-                            <div className="w-8 h-8 md:w-10 md:h-10 border border-primary/50 flex items-center justify-center p-1 group-hover:border-primary transition-colors">
-                                <Mountain className="w-5 h-5 md:w-6 md:h-6 text-primary" strokeWidth={1.5} />
+                        <div className="flex items-center gap-4 mb-8">
+                            <div className="relative w-12 h-12 md:w-14 md:h-14">
+                                <Image 
+                                    src="/logo.png" 
+                                    alt="K&C Design Logo" 
+                                    fill 
+                                    className="object-contain"
+                                />
                             </div>
                             <span className="text-2xl font-medium tracking-wide">K&C DESIGN</span>
                         </div>
@@ -72,29 +81,24 @@ export default function Footer() {
                                     </a>
                                 );
                             })}
-                            {/* X/Twitter Icon */}
-                            <a
-                                href="#"
-                                aria-label="X (Twitter)"
-                                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-primary hover:bg-primary hover:text-black transition-all duration-300"
-                            >
-                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                                </svg>
-                            </a>
                         </div>
                     </div>
 
-                    {/* Right: Contact Info */}
-                    <div className="lg:text-right">
-                        <h3 className="text-xs font-bold tracking-[0.3em] text-primary uppercase mb-8">
-                            GET IN TOUCH
-                        </h3>
+                    {/* Center: Services */}
+                    
 
-                        <div className="space-y-3 text-sm text-muted">
-                            <p>0665 Broadway st, 10234 NY, USA</p>
-                            <p>+1 123 567 8910</p>
-                            <p>design@kcdesign.com</p>
+                    {/* Right: Contact & Navigation */}
+                    <div className="lg:text-right flex flex-col justify-between">
+                        <div>
+                            <h3 className="text-xs font-bold tracking-[0.3em] text-primary uppercase mb-8">
+                                GET IN TOUCH
+                            </h3>
+
+                            <div className="space-y-3 text-sm text-muted">
+                                <p>0665 Broadway st, 10234 NY, USA</p>
+                                <p>+1 123 567 8910</p>
+                                <p>design@kcdesign.com</p>
+                            </div>
                         </div>
                     </div>
 
@@ -106,13 +110,13 @@ export default function Footer() {
                     {/* Navigation Links */}
                     <nav className="flex flex-wrap items-center justify-center gap-6 text-sm">
                         {footerLinks.map((link) => (
-                            <a
+                            <Link
                                 key={link.label}
                                 href={link.href}
-                                className="text-muted hover:text-primary transition-colors"
+                                className="text-muted hover:text-primary transition-colors uppercase tracking-widest text-[10px] font-bold"
                             >
                                 {link.label}
-                            </a>
+                            </Link>
                         ))}
                     </nav>
 

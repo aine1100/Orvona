@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
-import { Mountain, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const navItems = [
     { name: "HOME", href: "/" },
@@ -21,14 +22,20 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="fixed top-0 left-0 right-0 z-[60] flex items-center justify-between px-6 md:px-12 lg:px-20 py-6 md:py-8 bg-[#202020] transition-all duration-300">
+            <nav className="fixed top-0 left-0 right-0 z-[60] flex items-center justify-between px-6 md:px-12 lg:px-20 py-6  bg-[#202020] transition-all duration-300">
                 {/* Logo */}
-                <div className="flex items-center gap-2 md:gap-3 group cursor-pointer">
-                    <div className="w-8 h-8 md:w-10 md:h-10 border border-primary/50 flex items-center justify-center p-1 group-hover:border-primary transition-colors">
-                        <Mountain className="w-5 h-5 md:w-6 md:h-6 text-primary" strokeWidth={1.5} />
+                <Link href="/" className="flex items-center gap-3 md:gap-4 group cursor-pointer">
+                    <div className="relative w-20 h-20 overflow-hidden">
+                        <Image 
+                            src="/logo.png" 
+                            alt="K&C Design Logo" 
+                            fill 
+                            className="object-contain"
+                            priority
+                        />
                     </div>
-                    <span className="text-base md:text-lg font-semibold  text-white">K&C Design</span>
-                </div>
+                    <span className="text-base md:text-lg font-semibold tracking-wide text-white">K&C Design</span>
+                </Link>
 
                 {/* Desktop Menu Links */}
                 <div className="hidden md:flex items-center gap-2">
