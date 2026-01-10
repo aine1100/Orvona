@@ -89,9 +89,9 @@ function FAQAccordionItem({ item, isOpen, onToggle }: {
         onClick={onToggle}
         className="w-full py-6 flex items-start gap-4 text-left group transition-colors hover:text-primary"
       >
-        {/* <span className="text-primary font-medium text-sm mt-1 flex-shrink-0">
+        <span className="text-primary font-medium text-sm mt-1 flex-shrink-0">
           {item.id}.
-        </span> */}
+        </span>
         <span className="flex-1 text-lg md:text-xl text-white group-hover:text-primary transition-colors">
           {item.question}
         </span>
