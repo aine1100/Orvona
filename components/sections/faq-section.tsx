@@ -17,21 +17,63 @@ type FAQItem = {
 const faqItems: FAQItem[] = [
   {
     id: 1,
-    question: "What does your design package include?",
+    question: "What services does K&C Design provide?",
     answer:
-      "Our comprehensive design package includes initial consultations, concept development, 3D visualizations, detailed floor plans, material specifications, and project management support throughout the construction phase.",
+      "We offer integrated architecture and engineering services, including architectural design, civil and structural engineering, MEP, fire protection, interior design, and landscape architecture—all coordinated under one roof.",
   },
   {
     id: 2,
-    question: "How long does a typical project take?",
+    question: "What types of projects do you work on?",
     answer:
-      "Project timelines vary depending on scope and complexity. A typical residential project takes 3-6 months from initial concept to final design delivery. Larger commercial projects may take 6-12 months. We'll provide a detailed timeline during our initial consultation.",
+      "We work on a wide range of projects, including commercial, residential, mixed-use, renovations, tenant improvements, and expansions.",
   },
   {
     id: 3,
-    question: "Will I receive 3D visuals of the project?",
+    question: "How does the design process work?",
     answer:
-      "Absolutely! We provide photorealistic 3D renderings at multiple stages of the design process. This allows you to visualize the final result and make informed decisions before construction begins.",
+      "Our process begins with understanding your goals and project requirements. We then move through concept design, detailed drawings, permitting support, and coordination through construction to ensure a smooth and efficient project delivery.",
+  },
+  {
+    id: 4,
+    question: "Do you handle permitting and code compliance?",
+    answer:
+      "Yes. All of our designs are prepared to meet local and state codes, and we assist with permitting and agency coordination to help avoid delays.",
+  },
+  {
+    id: 5,
+    question: "How long does a typical project take?",
+    answer:
+      "Project timelines vary based on size and complexity. Smaller projects may take a few months, while larger or multi-discipline projects may take 6–12 months. We provide a clear schedule early in the process.",
+  },
+  {
+    id: 6,
+    question: "Will I receive 3D visuals of my project?",
+    answer:
+      "Yes. Depending on project scope, we can provide 3D renderings and visualizations to help you better understand the design before construction begins.",
+  },
+  {
+    id: 7,
+    question: "Do you work with clients outside of Georgia?",
+    answer:
+      "Yes. While we are based in Georgia, we serve clients across multiple states and coordinate with local jurisdictions as required.",
+  },
+  {
+    id: 8,
+    question: "Will you coordinate with contractors and consultants?",
+    answer:
+      "Absolutely. We collaborate closely with contractors, owners, and other stakeholders to ensure accurate documentation and efficient construction.",
+  },
+  {
+    id: 9,
+    question: "Can you handle renovations and existing buildings?",
+    answer:
+      "Yes. We have extensive experience with renovations, expansions, and tenant improvements for existing structures.",
+  },
+  {
+    id: 10,
+    question: "How do I get started?",
+    answer:
+      "Simply contact us through our website or give us a call. We'll schedule an initial consultation to discuss your project goals and next steps.",
   },
 ];
 
@@ -47,9 +89,9 @@ function FAQAccordionItem({ item, isOpen, onToggle }: {
         onClick={onToggle}
         className="w-full py-6 flex items-start gap-4 text-left group transition-colors hover:text-primary"
       >
-        <span className="text-primary font-medium text-sm mt-1 flex-shrink-0">
+        {/* <span className="text-primary font-medium text-sm mt-1 flex-shrink-0">
           {item.id}.
-        </span>
+        </span> */}
         <span className="flex-1 text-lg md:text-xl text-white group-hover:text-primary transition-colors">
           {item.question}
         </span>
