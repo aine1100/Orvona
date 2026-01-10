@@ -1,22 +1,31 @@
-"use client";
+import Image from "next/image";
 
 export default function ContactHero() {
   return (
-    <section className="relative h-[50vh] md:h-[70vh] w-full flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url("/contact_us.png")' }}
-      >
-        <div className="absolute inset-0 bg-black/70" />
-      </div>
+    <section className="relative w-full ">
+      {/* Spacer to match Navbar height and background */}
 
-      {/* Content */}
-      <div className="relative z-10 text-center">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-wider text-white mb-4">
-          CONTACT US
-        </h1>
-       
+      {/* Hero Content Area */}
+      <div className="relative h-[50vh] md:h-[70vh] w-full flex items-center justify-center overflow-visible">
+        {/* Background Image Container */}
+        <div className="absolute inset-0 z-0 md:-top-20">
+          <Image
+            src="/contact_us.png"
+            alt="Contact Us Background"
+            fill
+            priority
+            className="object-cover  w-full h-full object-top opacity-20"
+          />
+          {/* Subtle Overlay to make image even less visible */}
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+
+        {/* Text Content */}
+        <div className="relative z-10 text-center px-6">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-[0.2em] text-white uppercase drop-shadow-2xl">
+            Contact Us
+          </h1>
+        </div>
       </div>
     </section>
   );

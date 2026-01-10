@@ -22,10 +22,10 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="fixed top-0 left-0 right-0 z-[60] flex items-center justify-between px-6 md:px-12 lg:px-20 py-6  bg-[#202020] transition-all duration-300">
+            <nav className="fixed top-0 left-0 right-0 z-[60] flex items-center justify-between px-6 md:px-12 lg:px-20 py-2  bg-[#202020] transition-all duration-300">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-3 md:gap-4 group cursor-pointer">
-                    <div className="relative w-20 h-20 overflow-hidden">
+                    <div className="relative w-24 h-24 overflow-hidden">
                         <Image 
                             src="/logo.png" 
                             alt="K&C Design Logo" 
@@ -34,7 +34,6 @@ export default function Navbar() {
                             priority
                         />
                     </div>
-                    <span className="text-base md:text-lg font-semibold tracking-wide text-white">K&C Design</span>
                 </Link>
 
                 {/* Desktop Menu Links */}
