@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/cn";
 import SectionHeader from "../ui/section-header";
+import Button from "../ui/button/button";
 
 // 1. Define the data type
 type FAQItem = {
@@ -118,11 +119,14 @@ function FAQAccordionItem({ item, isOpen, onToggle }: {
 
 // 4. Main Section Component
 export default function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openId, setOpenId] = useState<number | null>(null);
+  const [showAll, setShowAll] = useState(false);
 
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+  const toggleFAQ = (id: number) => {
+    setOpenId(openId === id ? null : id);
   };
+
+  const displayedItems = showAll ? faqItems : faqItems.slice(0, 3);
 
   return (
     <section className="py-24 lg:py-32 bg-[#202020] relative overflow-hidden">
@@ -141,15 +145,32 @@ export default function FAQSection() {
             
             {/* FAQ Items (Mapping) */}
             <div className="space-y-0">
-              {faqItems.map((item, index) => (
+              {displayedItems.map((item) => (
                 <FAQAccordionItem
                   key={item.id}
                   item={item}
-                  isOpen={openIndex === index}
-                  onToggle={() => toggleFAQ(index)}
+                  isOpen={openId === item.id}
+                  onToggle={() => toggleFAQ(item.id)}
                 />
               ))}
             </div>
+
+            {faqItems.length > 3 && (
+              <div className="mt-8">
+                <Button variant="outline" onClick={() => {
+                  setShowAll((s) => {
+                    const next = !s;
+                    if (!next) {
+                      // collapsing: close any open item that is outside the first 3
+                      setOpenId((prev) => (prev && prev > 3 ? null : prev));
+                    }
+                    return next;
+                  });
+                }}>
+                  {showAll ? "Show less" : "Show more"}
+                </Button>
+              </div>
+            )}
           </div>
 
           {/* Right: Image */}
