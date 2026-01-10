@@ -22,12 +22,12 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="fixed top-0 left-0 right-0 z-[60] flex items-center justify-between px-6 md:px-12 lg:px-20 py-2  bg-[#202020] transition-all duration-300">
+            <nav className="fixed top-0 left-0 right-0 z-[60] flex items-center justify-between px-6 md:px-12 lg:px-20   bg-[#202020] transition-all duration-300">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-3 md:gap-4 group cursor-pointer">
-                    <div className="relative w-24 h-24 overflow-hidden">
+                    <div className="relative w-32 md:w-48 h-32 aspect-[3/4] overflow-hidden">
                         <Image 
-                            src="/logo.png" 
+                            src="/klogo.png" 
                             alt="K&C Design Logo" 
                             fill 
                             className="object-contain"

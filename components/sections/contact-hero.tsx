@@ -21,11 +21,7 @@ export default function ContactHero() {
         </div>
 
         {/* Text Content */}
-        <div className="relative z-10 text-center px-6">
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-[0.2em] text-white uppercase drop-shadow-2xl">
-            Contact Us
-          </h1>
-        </div>
+       
       </div>
     </section>
   );

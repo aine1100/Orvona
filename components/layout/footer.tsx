@@ -50,9 +50,9 @@ export default function Footer() {
                     <div>
                         {/* Logo */}
                         <div className="flex items-center gap-4 mb-8">
-                            <div className="relative w-24 h-24 md:w-14 md:h-14">
+                            <div className="relative w-36 h-36 ">
                                 <Image 
-                                    src="/logo.png" 
+                                    src="/klogo.png" 
                                     alt="K&C Design Logo" 
                                     fill 
                                     className="object-contain"
