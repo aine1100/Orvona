@@ -145,12 +145,10 @@ export default function TestimonialsSection() {
 
         {/* Author Info */}
         <div className="flex items-center gap-4">
-          <div className="relative w-12 h-12 rounded-full overflow-hidden bg-white/5">
-            <img
-              src={testimonial.avatar}
-              alt={testimonial.author}
-              className="w-full h-full object-cover"
-            />
+          <div className="relative w-12 h-12 rounded-full bg-[#d4af6a] flex items-center justify-center">
+            <span className="text-lg font-semibold text-black">
+              {testimonial.author.charAt(0)}
+            </span>
           </div>
           <div>
             <h4 className="text-base font-medium text-white">

@@ -16,12 +16,23 @@ type TeamMember = {
 
 // Expanded data for the full page
 const teamMembers: TeamMember[] = [
-    { id: 1, name: "Chad Spink", role: "Founder", image: "/spink.png" },
+    { id: 1, name: "Chad Spink", role: "Founder", image: "/chad_spink.png" },
      {
     id:2,
     name:"Kwok Yee Chan",
     role:"Founder & Financial Manager",
     image:"/KwokYeeChan.png"
+  },{
+    id:3,
+    name:"Wesley Spradling",
+    role:"Principal Architect",
+    image:"/wesley.png"
+  },
+  {
+    id:4,
+    name:"Linda Russell",
+    role:"Administrative Assistant",
+    image:"/linda.png"
   }
     // { id: 2, name: "Sarah Chen", role: "Interior Director", image: "/about-villa.png" },
     // { id: 3, name: "Marcus Reynolds", role: "Lead Architect", image: "/about-villa.png" },
@@ -45,7 +56,7 @@ export default function TeamPage() {
                             <div
                                 key={member.id}
                                 data-cursor="drag"
-                                className="group relative aspect-[5/4] overflow-hidden bg-[#1a1a1a] rounded-sm cursor-none"
+                                className="group relative aspect-[3/4] overflow-hidden bg-[#1a1a1a] rounded-sm cursor-none"
                             >
                                 {/* Image - Grayscale to Color on Hover */}
                                 <Image

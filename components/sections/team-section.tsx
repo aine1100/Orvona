@@ -20,14 +20,25 @@ const teamMembers: TeamMember[] = [
   {
     id: 1,
     name: "Chad Spink",
-    role: "Founder & CEO",
-    image: "/spink.png",
+    role: "CEO & Architect Lead",
+    image: "/chad_spink.png",
   },
   {
     id:2,
     name:"Kwok Yee Chan",
     role:"Founder & Financial Manager",
     image:"/KwokYeeChan.png"
+  },{
+    id:3,
+    name:"Wesley Spradling",
+    role:"Principal Architect",
+    image:"/wesley.png"
+  },
+  {
+    id:4,
+    name:"Linda Russell",
+    role:"Administrative Assistant",
+    image:"/linda.png"
   }
   // {
   //   id: 2,
@@ -92,7 +103,7 @@ function TeamCard({ member, isHovering, cursorPos, normalizedCursor }: {
     <div
       ref={cardRef}
       data-cursor="drag"
-      className="group relative flex-shrink-0 w-[280px] md:w-[240px] aspect-[3/4] overflow-hidden bg-[#1a1a1a] rounded-sm cursor-none transition-all duration-500 ease-out"
+      className="group relative flex-shrink-0 w-[280px] md:w-[245px] aspect-[3/4] overflow-hidden bg-[#1a1a1a] rounded-sm cursor-none transition-all duration-500 ease-out"
       style={{
         transform: `translateX(${shiftX}px) scale(${emphasis.scale * (isHovering ? (1 - Math.abs(normalizedCursor) * 0.02) : 1)})`,
         filter: `brightness(${emphasis.brightness}%)`,
@@ -103,7 +114,7 @@ function TeamCard({ member, isHovering, cursorPos, normalizedCursor }: {
         src={member.image}
         alt={member.name}
         fill
-        className="object-fit  transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+        className="object-cover   transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
       />
 
       {/* Hover Overlay */}

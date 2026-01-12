@@ -5,7 +5,7 @@ export default function HeroTeam() {
         <section className="relative h-[50vh] md:h-[80vh] w-full flex items-center justify-center overflow-hidden">
             {/* Background Image with Overlay */}
             <div
-                className="absolute object-top  inset-0 bg-cover bg-center bg-no-repeat"
+                className="absolute object-top  inset-0 bg-fit bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url("/team.png")' }}
             >
                 <div className="absolute inset-0 bg-black/70" />
