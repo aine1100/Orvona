@@ -16,7 +16,13 @@ type TeamMember = {
 
 // Expanded data for the full page
 const teamMembers: TeamMember[] = [
-    { id: 1, name: "Chad Spink", role: "Founder", image: "/chad_spink.png" },
+    { id: 1, name: "Chad Spink", role: "Founder", image: "/spink.png" },
+     {
+    id:2,
+    name:"Kwok Yee Chan",
+    role:"Founder & Financial Manager",
+    image:"/KwokYeeChan.png"
+  }
     // { id: 2, name: "Sarah Chen", role: "Interior Director", image: "/about-villa.png" },
     // { id: 3, name: "Marcus Reynolds", role: "Lead Architect", image: "/about-villa.png" },
     // { id: 4, name: "Elena Rodriguez", role: "Lighting Specialist", image: "/about-villa.png" },

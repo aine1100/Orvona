@@ -26,7 +26,7 @@ export default function FounderSection() {
                     {/* Left: Image */}
                     <div className="relative min-h-[400px] lg:min-h-full rounded-sm overflow-hidden border border-white/5 shadow-2xl group">
                         <Image
-                            src="/chad_spink.png"
+                            src="/spink.png"
                             alt="Founder of K&C Design"
                             fill
                             className="object-cover transition-transform duration-700 group-hover:scale-105"

@@ -20,9 +20,15 @@ const teamMembers: TeamMember[] = [
   {
     id: 1,
     name: "Chad Spink",
-    role: "Founder",
-    image: "/chad_spink.png",
+    role: "Founder & CEO",
+    image: "/spink.png",
   },
+  {
+    id:2,
+    name:"Kwok Yee Chan",
+    role:"Founder & Financial Manager",
+    image:"/KwokYeeChan.png"
+  }
   // {
   //   id: 2,
   //   name: "Sarah Chen",
@@ -97,7 +103,7 @@ function TeamCard({ member, isHovering, cursorPos, normalizedCursor }: {
         src={member.image}
         alt={member.name}
         fill
-        className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+        className="object-cover w-full  transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
       />
 
       {/* Hover Overlay */}
@@ -109,7 +115,7 @@ function TeamCard({ member, isHovering, cursorPos, normalizedCursor }: {
           {member.name}
         </h3>
         <div className="w-12 h-px bg-white/20 mb-3" />
-        <span className="text-sm font-medium tracking-wide text-white/60 uppercase">
+        <span className="text-sm font-medium tracking-wide text-center text-white/60 uppercase">
           {member.role}
         </span>
       </div>

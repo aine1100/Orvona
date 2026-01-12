@@ -12,7 +12,7 @@ export default function HeroTeam() {
             </div>
 
             {/* Content */}
-            <div className="relative z-10 text-center">
+            <div className="relative z-10 text-center p-5">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-wider text-white mb-4 uppercase">
                     Meet Our Team
                 </h1>

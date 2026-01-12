@@ -157,7 +157,7 @@ export default function FAQSection() {
 
             {faqItems.length > 3 && (
               <div className="mt-8">
-                <Button variant="outline" onClick={() => {
+                <Button variant="outline" aria-expanded={showAll} onClick={() => {
                   setShowAll((s) => {
                     const next = !s;
                     if (!next) {
