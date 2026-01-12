@@ -29,7 +29,7 @@ export default function FounderSection() {
                             src="/spink.png"
                             alt="Founder of K&C Design"
                             fill
-                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                            className="object-fit transition-transform duration-700 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
                     </div>

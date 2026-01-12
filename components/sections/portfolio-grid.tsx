@@ -39,7 +39,7 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
         src={project.image}
         alt={project.title}
         fill
-        className="object-cover transition-transform duration-700 group-hover:scale-110"
+        className="object-fit transition-transform duration-700 group-hover:scale-110"
       />
       
       {/* Overlay */}

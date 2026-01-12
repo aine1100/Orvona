@@ -103,7 +103,7 @@ function TeamCard({ member, isHovering, cursorPos, normalizedCursor }: {
         src={member.image}
         alt={member.name}
         fill
-        className="object-cover w-full  transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+        className="object-fit  transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
       />
 
       {/* Hover Overlay */}
