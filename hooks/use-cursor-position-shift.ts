@@ -84,7 +84,6 @@ export function useCursorPositionShift<T extends HTMLElement, U extends HTMLElem
     container.addEventListener("mouseleave", handleMouseLeave);
     container.addEventListener("mousedown", handleMouseDown);
     
-    // Window listeners to handle dragging outside the container
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseup", handleMouseUp);
 
