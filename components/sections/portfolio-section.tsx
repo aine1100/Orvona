@@ -5,8 +5,7 @@ import Link from "next/link";
 import { ArrowUpRight, Layers, FolderOpen } from "lucide-react";
 import { cn } from "@/lib/cn";
 import SectionHeader from "@/components/ui/section-header";
-import { useState, useEffect, useRef } from "react";
-import { useCursorPositionShift } from "@/hooks/use-cursor-position-shift";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { portfolioCategories } from "@/data/portfolio-data";
 
 // Map portfolio categories to the project card format
@@ -28,47 +27,29 @@ interface Project {
   slug: string;
 }
 
-function ProjectCard({ project, isHovering, cursorPos }: {
+function ProjectCard({ project, isDragging }: {
   project: Project,
-  isHovering: boolean,
-  cursorPos: { x: number, y: number }
+  isDragging: boolean
 }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [proximityScale, setProximityScale] = useState(1);
-
-  useEffect(() => {
-    if (!cardRef.current || !isHovering) {
-      setProximityScale(1);
-      return;
+  const handleClick = (e: React.MouseEvent) => {
+    // Prevent navigation if user was dragging
+    if (isDragging) {
+      e.preventDefault();
     }
-    const rect = cardRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const dist = Math.abs(cursorPos.x - centerX);
-    const maxDist = 400;
-
-    if (dist < maxDist) {
-      const factor = 1 - (dist / maxDist);
-      setProximityScale(1 + (factor * 0.03));
-    } else {
-      setProximityScale(1);
-    }
-  }, [cursorPos, isHovering]);
+  };
 
   return (
-    <Link href={`/portfolio/${project.slug}`}>
+    <Link href={`/portfolio/${project.slug}`} onClick={handleClick}>
       <div
-        ref={cardRef}
         data-cursor="drag"
-        className="relative flex-shrink-0 w-[85vw] md:w-[500px] aspect-[4/3] group overflow-hidden rounded-sm transition-transform duration-500 ease-out"
-        style={{
-          transform: `scale(${proximityScale})`,
-        }}
+        className="relative flex-shrink-0 w-[85vw] md:w-[500px] aspect-[4/3] group overflow-hidden rounded-sm transition-transform duration-500 ease-out cursor-grab active:cursor-grabbing select-none"
       >
         <Image
           src={project.image}
           alt={project.title}
           fill
-          className="object-cover transition-transform duration-1000 group-hover:scale-105"
+          className="object-cover transition-transform duration-1000 group-hover:scale-105 pointer-events-none"
+          draggable={false}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
         <div className="absolute top-8 right-8 w-12 h-12 rounded-full border border-white/10 flex items-center justify-center bg-black/40 backdrop-blur-md transition-all duration-500 group-hover:bg-primary group-hover:border-primary">
@@ -98,16 +79,20 @@ function ProjectCard({ project, isHovering, cursorPos }: {
 }
 
 export default function PortfolioSection() {
-  const { containerRef, normalizedCursor, isHovering, cursorPos } = useCursorPositionShift<HTMLDivElement>({
-    smoothing: 0.1,
-    initialValue: -1
-  });
-
-  const [activeIndex, setActiveIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  
   const [trackWidth, setTrackWidth] = useState(0);
   const [containerWidth, setContainerWidth] = useState(0);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [hasDragged, setHasDragged] = useState(false);
+  const startXRef = useRef(0);
+  const scrollStartRef = useRef(0);
 
+  const maxShift = Math.max(0, trackWidth - containerWidth);
+
+  // Update widths on resize
   useEffect(() => {
     const updateWidths = () => {
       if (trackRef.current) setTrackWidth(trackRef.current.scrollWidth);
@@ -118,51 +103,112 @@ export default function PortfolioSection() {
     return () => window.removeEventListener('resize', updateWidths);
   }, []);
 
-  const maxShift = Math.max(0, trackWidth - containerWidth);
-  const centerOffset = -maxShift / 2;
-  const currentShift = centerOffset - (normalizedCursor * (maxShift / 2));
+  // Handle mouse down - start dragging
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+    setHasDragged(false);
+    startXRef.current = e.clientX;
+    scrollStartRef.current = scrollPosition;
+  }, [scrollPosition]);
+
+  // Document-level mouse move and up handlers
+  useEffect(() => {
+    if (!isDragging) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const deltaX = startXRef.current - e.clientX;
+      if (Math.abs(deltaX) > 5) {
+        setHasDragged(true);
+      }
+      let newPosition = scrollStartRef.current + deltaX;
+      
+      // Clamp to bounds
+      newPosition = Math.max(0, Math.min(maxShift, newPosition));
+      setScrollPosition(newPosition);
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
+      setTimeout(() => setHasDragged(false), 100);
+    };
+
+    // Add document-level listeners when dragging
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isDragging, maxShift]);
+
+  // Touch event handlers for mobile
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    setIsDragging(true);
+    setHasDragged(false);
+    startXRef.current = e.touches[0].clientX;
+    scrollStartRef.current = scrollPosition;
+  }, [scrollPosition]);
 
   useEffect(() => {
-    if (maxShift === 0) return;
-    const percentage = Math.abs(currentShift) / maxShift;
-    const newIndex = Math.round(percentage * (projects.length - 1));
-    if (newIndex !== activeIndex && newIndex >= 0 && newIndex < projects.length) {
-      setActiveIndex(newIndex);
-    }
-  }, [currentShift, maxShift]);
+    if (!isDragging) return;
+
+    const handleTouchMove = (e: TouchEvent) => {
+      const deltaX = startXRef.current - e.touches[0].clientX;
+      if (Math.abs(deltaX) > 5) {
+        setHasDragged(true);
+      }
+      let newPosition = scrollStartRef.current + deltaX;
+      
+      // Clamp to bounds
+      newPosition = Math.max(0, Math.min(maxShift, newPosition));
+      setScrollPosition(newPosition);
+    };
+
+    const handleTouchEnd = () => {
+      setIsDragging(false);
+      setTimeout(() => setHasDragged(false), 100);
+    };
+
+    document.addEventListener('touchmove', handleTouchMove);
+    document.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [isDragging, maxShift]);
+
+  const currentShift = -scrollPosition;
 
   return (
     <section id="portfolio" className="relative py-24 lg:py-40 bg-[#202020] text-white overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 sm:px-12 md:px-16 lg:px-24">
         <SectionHeader title="PORTFOLIO." letter="P" />
 
-        <div className="relative mb-8">
-          <div className={cn(
-            "text-center text-sm text-white/40 transition-opacity duration-500",
-            isHovering ? "opacity-0" : "opacity-100"
-          )}>
-
-          </div>
-        </div>
-
         <div
           ref={containerRef}
-          className="relative overflow-hidden cursor-none py-8 -my-8"
+          className={cn(
+            "relative overflow-hidden py-8 -my-8 select-none",
+            isDragging ? "cursor-grabbing" : "cursor-grab"
+          )}
+          onMouseDown={handleMouseDown}
+          onTouchStart={handleTouchStart}
         >
           <div
             ref={trackRef}
             className="flex gap-6 lg:gap-10 will-change-transform"
             style={{
               transform: `translateX(${currentShift}px)`,
-              transition: isHovering ? 'none' : 'transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)'
+              transition: isDragging ? 'none' : 'transform 0.3s ease-out'
             }}
           >
             {projects.map((project, index) => (
               <ProjectCard
                 key={index}
                 project={project}
-                isHovering={isHovering}
-                cursorPos={cursorPos}
+                isDragging={hasDragged}
               />
             ))}
           </div>
@@ -170,18 +216,23 @@ export default function PortfolioSection() {
 
         {/* Scroll Indicator */}
         <div className="flex justify-center mt-12 gap-2 items-center">
-          {projects.map((_, i) => (
-            <button
-              key={i}
-              className={cn(
-                "h-1 rounded-full transition-all duration-500",
-                i === activeIndex
-                  ? "bg-primary w-12"
-                  : "bg-white/10 w-2 hover:bg-white/20"
-              )}
-              aria-label={`Project ${i + 1}`}
-            />
-          ))}
+          {projects.map((_, i) => {
+            const roughIndex = maxShift > 0 
+              ? Math.round((scrollPosition / maxShift) * (projects.length - 1))
+              : 0;
+            const isActive = i === roughIndex;
+            return (
+              <div
+                key={i}
+                className={cn(
+                  "h-1 rounded-full transition-all duration-500",
+                  isActive
+                    ? "bg-primary w-12"
+                    : "bg-white/10 w-2"
+                )}
+              />
+            );
+          })}
         </div>
       </div>
     </section>

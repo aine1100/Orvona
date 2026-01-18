@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/cn";
@@ -13,8 +13,6 @@ type TeamMember = {
   role: string;
   image: string;
 };
-
-// ... (teamMembers array remains the same)
 
 const teamMembers: TeamMember[] = [
   {
@@ -40,81 +38,21 @@ const teamMembers: TeamMember[] = [
     role:"Administrative Assistant",
     image:"/linda.png"
   }
-  // {
-  //   id: 2,
-  //   name: "Sarah Chen",
-  //   role: "Interior Director",
-  //   image: "/about-villa.png",
-  // },
-  // {
-  //   id: 3,
-  //   name: "Marcus Reynolds",
-  //   role: "Lead Architect",
-  //   image: "/about-villa.png",
-  // },
-  // {
-  //   id: 4,
-  //   name: "Elena Rodriguez",
-  //   role: "Lighting Specialist",
-  //   image: "/about-villa.png",
-  // },
-  // {
-  //   id: 5,
-  //   name: "David Kim",
-  //   role: "3D Visualizer",
-  //   image: "/about-villa.png",
-  // },
 ];
 
-import { useCursorPositionShift } from "@/hooks/use-cursor-position-shift";
-
-function TeamCard({ member, isHovering, cursorPos, normalizedCursor }: {
-  member: TeamMember,
-  isHovering: boolean,
-  cursorPos: { x: number, y: number },
-  normalizedCursor: number
-}) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [emphasis, setEmphasis] = useState({ scale: 1, brightness: 100 });
-  const shiftX = isHovering ? normalizedCursor * -20 : 0;
-
-  useEffect(() => {
-    if (!cardRef.current || !isHovering) {
-      setEmphasis({ scale: 1, brightness: 100 });
-      return;
-    }
-    const rect = cardRef.current.getBoundingClientRect();
-    const cardCenterX = rect.left + rect.width / 2;
-    const dist = Math.abs(cursorPos.x - cardCenterX);
-    const maxDist = 400; // Activation radius
-
-    if (dist < maxDist) {
-      const factor = 1 - (dist / maxDist); // 0 to 1
-      setEmphasis({
-        scale: 1 + (factor * 0.05), // Max scale 1.05
-        brightness: 100 + (factor * 20), // Max brightness 120%
-      });
-    } else {
-      setEmphasis({ scale: 1, brightness: 100 });
-    }
-  }, [cursorPos, isHovering]);
-
+function TeamCard({ member }: { member: TeamMember }) {
   return (
     <div
-      ref={cardRef}
       data-cursor="drag"
-      className="group relative flex-shrink-0 w-[280px] md:w-[245px] aspect-[3/4] overflow-hidden bg-[#1a1a1a] rounded-sm cursor-none transition-all duration-500 ease-out"
-      style={{
-        transform: `translateX(${shiftX}px) scale(${emphasis.scale * (isHovering ? (1 - Math.abs(normalizedCursor) * 0.02) : 1)})`,
-        filter: `brightness(${emphasis.brightness}%)`,
-      }}
+      className="group relative flex-shrink-0 w-[280px] md:w-[245px] aspect-[3/4] overflow-hidden bg-[#1a1a1a] rounded-sm cursor-grab active:cursor-grabbing transition-all duration-500 ease-out select-none"
     >
       {/* Image */}
       <Image
         src={member.image}
         alt={member.name}
         fill
-        className="object-cover   transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+        className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0 pointer-events-none"
+        draggable={false}
       />
 
       {/* Hover Overlay */}
@@ -135,28 +73,97 @@ function TeamCard({ member, isHovering, cursorPos, normalizedCursor }: {
 }
 
 export default function TeamSection() {
-  const { containerRef: sectionRef, normalizedCursor, isHovering, cursorPos } = useCursorPositionShift<HTMLDivElement>({
-    smoothing: 0.1,
-    initialValue: -1
-  });
-
+  const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  
   const [trackWidth, setTrackWidth] = useState(0);
   const [containerWidth, setContainerWidth] = useState(0);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const startXRef = useRef(0);
+  const scrollStartRef = useRef(0);
 
+  const maxShift = Math.max(0, trackWidth - containerWidth);
+
+  // Update widths on resize
   useEffect(() => {
     const updateWidths = () => {
       if (trackRef.current) setTrackWidth(trackRef.current.scrollWidth);
-      if (sectionRef.current) setContainerWidth(sectionRef.current.offsetWidth);
+      if (containerRef.current) setContainerWidth(containerRef.current.offsetWidth);
     };
     updateWidths();
     window.addEventListener('resize', updateWidths);
     return () => window.removeEventListener('resize', updateWidths);
   }, []);
 
-  const maxShift = Math.max(0, trackWidth - containerWidth);
-  const centerOffset = -maxShift / 2;
-  const currentShift = centerOffset - (normalizedCursor * (maxShift / 2));
+  // Handle mouse down - start dragging
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+    startXRef.current = e.clientX;
+    scrollStartRef.current = scrollPosition;
+  }, [scrollPosition]);
+
+  // Document-level mouse move and up handlers
+  useEffect(() => {
+    if (!isDragging) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const deltaX = startXRef.current - e.clientX;
+      let newPosition = scrollStartRef.current + deltaX;
+      
+      // Clamp to bounds
+      newPosition = Math.max(0, Math.min(maxShift, newPosition));
+      setScrollPosition(newPosition);
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
+    };
+
+    // Add document-level listeners when dragging
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isDragging, maxShift]);
+
+  // Touch event handlers for mobile
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    setIsDragging(true);
+    startXRef.current = e.touches[0].clientX;
+    scrollStartRef.current = scrollPosition;
+  }, [scrollPosition]);
+
+  useEffect(() => {
+    if (!isDragging) return;
+
+    const handleTouchMove = (e: TouchEvent) => {
+      const deltaX = startXRef.current - e.touches[0].clientX;
+      let newPosition = scrollStartRef.current + deltaX;
+      
+      // Clamp to bounds
+      newPosition = Math.max(0, Math.min(maxShift, newPosition));
+      setScrollPosition(newPosition);
+    };
+
+    const handleTouchEnd = () => {
+      setIsDragging(false);
+    };
+
+    document.addEventListener('touchmove', handleTouchMove);
+    document.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [isDragging, maxShift]);
+
+  const currentShift = -scrollPosition;
 
   return (
     <section className="py-24 lg:py-40 bg-[#121212] relative overflow-hidden text-white">
@@ -176,13 +183,6 @@ export default function TeamSection() {
             </p>
            
             <div className="mt-4">
-              <div className={cn(
-                "text-sm text-white/20 transition-opacity duration-500 font-medium tracking-wider uppercase",
-                isHovering ? "opacity-0" : "opacity-100"
-              )}>
-              </div>
-            </div>
-            <div className="mt-4">
               <Link
                 href="/team"
                 className="inline-flex items-center justify-center px-8 py-4 border border-white/10 rounded-full text-xs font-bold tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all duration-300"
@@ -194,8 +194,13 @@ export default function TeamSection() {
 
           {/* Right Column: Dynamic Track */}
           <div
-            ref={sectionRef}
-            className="lg:w-2/3 min-w-0 cursor-none relative overflow-hidden py-4 -my-4"
+            ref={containerRef}
+            className={cn(
+              "lg:w-2/3 min-w-0 relative overflow-hidden py-4 -my-4 select-none",
+              isDragging ? "cursor-grabbing" : "cursor-grab"
+            )}
+            onMouseDown={handleMouseDown}
+            onTouchStart={handleTouchStart}
           >
             <div className="flex flex-col gap-12">
               <div
@@ -203,16 +208,13 @@ export default function TeamSection() {
                 className="flex gap-6 will-change-transform"
                 style={{
                   transform: `translateX(${currentShift}px)`,
-                  transition: isHovering ? 'none' : 'transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)'
+                  transition: isDragging ? 'none' : 'transform 0.3s ease-out'
                 }}
               >
                 {teamMembers.map((member) => (
                   <TeamCard
                     key={member.id}
                     member={member}
-                    isHovering={isHovering}
-                    cursorPos={cursorPos}
-                    normalizedCursor={normalizedCursor}
                   />
                 ))}
               </div>
@@ -220,8 +222,10 @@ export default function TeamSection() {
               {/* Scroll Indicator */}
               <div className="flex justify-start gap-2 items-center">
                 {teamMembers.map((_, i) => {
-                  const roughIndex = Math.round((Math.abs(currentShift) / maxShift) * (teamMembers.length - 1));
-                  const isActive = i === (isNaN(roughIndex) ? 0 : roughIndex);
+                  const roughIndex = maxShift > 0 
+                    ? Math.round((scrollPosition / maxShift) * (teamMembers.length - 1))
+                    : 0;
+                  const isActive = i === roughIndex;
                   return (
                     <div
                       key={i}
@@ -242,4 +246,3 @@ export default function TeamSection() {
     </section>
   );
 }
-
