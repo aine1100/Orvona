@@ -691,7 +691,7 @@ export const portfolioCategories: Category[] = [
         slug: "healthcare",
         title: "Healthcare",
         description: "Hospitals, clinics, dental offices, and medical facilities built for patient care.",
-        coverImage: "/PORTFOLIO/healthcare/MRI Image Center/mri-image-center-01.png",
+        coverImage: "/PORTFOLIO/healthcare/health center/health-center-01.jpg",
         folder: "healthcare",
         projects: [
             { 
@@ -711,7 +711,7 @@ export const portfolioCategories: Category[] = [
                 title: "MRI Image Center", 
                 slug: "mri-image-center",
                 folder: "MRI Image Center",
-                coverImage: "/PORTFOLIO/healthcare/MRI Image Center/mri-image-center-01.png",
+                coverImage: "/PORTFOLIO/healthcare/MRI Image Center/MRI ROOM.png",
                 images: [
                     "/PORTFOLIO/healthcare/MRI Image Center/mri-image-center-01.png",
                     "/PORTFOLIO/healthcare/MRI Image Center/mri-image-center-02.png",
