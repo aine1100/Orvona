@@ -711,7 +711,7 @@ export const portfolioCategories: Category[] = [
                 title: "MRI Image Center", 
                 slug: "mri-image-center",
                 folder: "MRI Image Center",
-                coverImage: "/PORTFOLIO/healthcare/MRI Image Center/MRI ROOM.png",
+                coverImage: "/PORTFOLIO/healthcare/MRI Image Center/MRI-ROOM.png",
                 images: [
                     "/PORTFOLIO/healthcare/MRI Image Center/mri-image-center-01.png",
                     "/PORTFOLIO/healthcare/MRI Image Center/mri-image-center-02.png",
@@ -722,7 +722,7 @@ export const portfolioCategories: Category[] = [
                     "/PORTFOLIO/healthcare/MRI Image Center/Front Lobby.png",
                     "/PORTFOLIO/healthcare/MRI Image Center/MRI Room (2).png",
                     "/PORTFOLIO/healthcare/MRI Image Center/MRI Room from Operator;s Room.png",
-                    "/PORTFOLIO/healthcare/MRI Image Center/MRI Room.png",
+                    "/PORTFOLIO/healthcare/MRI Image Center/MRI-Room.png",
                 ]
             },
             { 
