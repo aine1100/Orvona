@@ -56,7 +56,7 @@ export default function TeamPage() {
                             <div
                                 key={member.id}
                                 data-cursor="drag"
-                                className="group relative aspect-[3/4] overflow-hidden bg-[#1a1a1a] rounded-sm cursor-none"
+                                className="group relative aspect-[3/4]  overflow-hidden bg-[#1a1a1a] rounded-sm cursor-none"
                             >
                                 {/* Image - Grayscale to Color on Hover */}
                                 <Image
