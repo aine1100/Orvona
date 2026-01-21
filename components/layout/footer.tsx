@@ -94,7 +94,7 @@ export default function Footer() {
                             </h3>
 
                             <div className="space-y-3 text-sm text-muted">
-                                <p>0665 Broadway st, 10234 NY, USA</p>
+                                <p>673 Stickley Oak Way, Woodstock, GA, 30189</p>
                                 <p>+1 123 567 8910</p>
                                 <p>design@kcdesign.com</p>
                             </div>

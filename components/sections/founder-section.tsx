@@ -18,7 +18,7 @@ export default function FounderSection() {
             <div className="max-w-[1400px] mx-auto px-6 sm:px-12 md:px-16 lg:px-24">
 
                 {/* Header */}
-                <SectionHeader title="Founder." letter="F"/>
+                <SectionHeader title="Founder." letter="F" />
 
                 {/* Content Grid */}
                 <div className="grid w-full lg:grid-cols-2 gap-12 lg:gap-24 items-stretch">
@@ -29,7 +29,7 @@ export default function FounderSection() {
                             src="/spink.png"
                             alt="Founder of K&C Design"
                             fill
-                            className="object-fit transition-transform duration-700 group-hover:scale-105"
+                            className="object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
                     </div>
@@ -56,7 +56,7 @@ export default function FounderSection() {
                         </div>
 
                         {/* Core Values List */}
-                        
+
                         {/* Signature */}
                         <div className="pt-8 border-t border-white/10 flex items-center justify-between">
                             <div>

@@ -12,7 +12,7 @@ const contactInfo = [
     },
     {
         title: "Our address",
-        detail: "0665 Broadway St, New York, USA",
+        detail: "673 Stickley Oak Way, Woodstock, GA, 30189",
         icon: MapPin,
         bgColor: "bg-surface",
     },
