@@ -21,10 +21,10 @@ export default function FounderSection() {
                 <SectionHeader title="Founder." letter="F"/>
 
                 {/* Content Grid */}
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-stretch">
+                <div className="grid w-full lg:grid-cols-2 gap-12 lg:gap-24 items-stretch">
 
                     {/* Left: Image */}
-                    <div className="relative min-h-[400px] lg:min-h-full rounded-sm overflow-hidden border border-white/5 shadow-2xl group">
+                    <div className="relative min-h-[400px] w-full lg:min-h-full rounded-sm overflow-hidden border border-white/5 shadow-2xl group">
                         <Image
                             src="/spink.png"
                             alt="Founder of K&C Design"

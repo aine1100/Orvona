@@ -8,7 +8,7 @@ import LoadingScreen from "@/components/ui/loading-screen";
 
 export default function ContactPage() {
     return (
-        <main className="relative min-h-screen">
+        <main className="relative min-h-screen bg-[#141414]">
             <LoadingScreen />
             <Navbar />
             <ContactHero />

@@ -37,7 +37,7 @@ export default function Navbar() {
                 </Link>
 
                 {/* Desktop Menu Links */}
-                <div className="hidden md:flex items-center gap-2">
+                <div className="hidden lg:flex items-center gap-2">
                     {navItems.map((item) => {
                         const isActive = item.href === "/" ? pathname === "/" : pathname?.startsWith(item.href);
                         return (
@@ -58,7 +58,7 @@ export default function Navbar() {
 
                 {/* Mobile Menu Toggle */}
                 <button
-                    className="md:hidden text-white p-2 z-[70]"
+                    className="lg:hidden text-white p-2 z-[70]"
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     {isOpen ? <X size={28} /> : <Menu size={28} />}

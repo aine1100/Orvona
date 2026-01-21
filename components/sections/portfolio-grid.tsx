@@ -22,7 +22,7 @@ function CategoryCard({ category }: { category: typeof portfolioCategories[0] })
         />
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50 transition-opacity duration-500 group-hover:bg-black/70" />
+        <div className="absolute inset-0 bg-black/30 transition-opacity duration-500 group-hover:bg-black/70" />
 
         {/* Arrow Icon */}
         <div className="absolute top-6 right-6 w-12 h-12 rounded-full border border-white/20 bg-black/40 backdrop-blur-md flex items-center justify-center transition-all duration-500 group-hover:bg-primary group-hover:border-primary">
