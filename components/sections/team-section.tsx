@@ -19,19 +19,19 @@ const teamMembers: TeamMember[] = [
     id: 1,
     name: "Kwok Yee Chan",
     role: "Founder & Financial Manager",
-    image: "/KwokYeeChan.png",
+    image: "/Kwok Yee Chan.png",
   },
   {
     id: 2,
     name: "Chad Spink",
     role: "CEO & Project Manager",
-    image: "/chad_spink.png",
+    image: "/chad_spink (1).png",
   },
   {
     id: 3,
     name: "Wesley Spradling",
     role: "Architect",
-    image: "/wesley.png",
+    image: "/Wesley_Spradling (1).png",
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ const teamMembers: TeamMember[] = [
     id: 5,
     name: "Williams David",
     role: "Architect",
-    image: "/Williams David.png",
+    image: "/Williams David (1).png",
   },
   {
     id: 6,
@@ -71,6 +71,12 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: 10,
+    name: "James Mellor",
+    role: "Architect",
+    image: "/James Mellor.png",
+  },
+  {
+    id: 11,
     name: "Fuk Sang Chan",
     role: "Administrative Assistant",
     image: "/linda.png",

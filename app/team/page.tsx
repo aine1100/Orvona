@@ -16,16 +16,17 @@ type TeamMember = {
 
 // Expanded data for the full page
 const teamMembers: TeamMember[] = [
-    { id: 1, name: "Kwok Yee Chan", role: "Founder & Financial Manager", image: "/KwokYeeChan.png" },
-    { id: 2, name: "Chad Spink", role: "CEO & Project Manager", image: "/chad_spink.png" },
-    { id: 3, name: "Wesley Spradling", role: "Architect", image: "/wesley.png" },
+    { id: 1, name: "Kwok Yee Chan", role: "Founder & Financial Manager", image: "/Kwok Yee Chan.png" },
+    { id: 2, name: "Chad Spink", role: "CEO & Project Manager", image: "/chad_spink (1).png" },
+    { id: 3, name: "Wesley Spradling", role: "Architect", image: "/Wesley_Spradling (1).png" },
     { id: 4, name: "Robert Benedict", role: "Architect", image: "/Robert Benedict.png" },
-    { id: 5, name: "Williams David", role: "Architect", image: "/Williams David.png" },
+    { id: 5, name: "Williams David", role: "Architect", image: "/Williams David (1).png" },
     { id: 6, name: "Joseph Clair", role: "Architect", image: "/Joseph Clair.png" },
     { id: 7, name: "Alexey Leonichev", role: "Architect", image: "/Alexey Leonichev.png" },
     { id: 8, name: "Julie Margetich", role: "Architect", image: "/Julie Margetich.png" },
     { id: 9, name: "Michael Robert", role: "Architect", image: "/Michael_Robert.png" },
-    { id: 10, name: "Fuk Sang Chan", role: "Administrative Assistant", image: "/linda.png" },
+    { id: 10, name: "James Mellor", role: "Architect", image: "/James Mellor.png" },
+    { id: 11, name: "Fuk Sang Chan", role: "Administrative Assistant", image: "/linda.png" },
 ];
 
 export default function TeamPage() {
