@@ -20,22 +20,22 @@ export default function FounderSection() {
                 {/* Header */}
                 <SectionHeader title="Founder." letter="F" />
 
-                {/* Content Grid */}
-                <div className="grid w-full lg:grid-cols-2 gap-12 lg:gap-24 items-stretch">
+                {/* Content Grid - Image takes more space on large screens */}
+                <div className="grid w-full lg:grid-cols-5 gap-12 lg:gap-16 items-stretch">
 
-                    {/* Left: Image */}
-                    <div className="relative min-h-[400px] w-full lg:min-h-full rounded-sm overflow-hidden border border-white/5 shadow-2xl group">
+                    {/* Left: Image - Takes 3 columns on large screens */}
+                    <div className="relative min-h-[500px] w-full lg:col-span-3 lg:min-h-[600px] rounded-sm overflow-hidden border border-white/5 shadow-2xl group">
                         <Image
                             src="/spink.png"
                             alt="Founder of K&C Design"
                             fill
-                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                            className="object-fit transition-transform duration-700 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
                     </div>
 
-                    {/* Right: Content */}
-                    <div className="relative flex flex-col gap-8">
+                    {/* Right: Content - Takes 2 columns on large screens */}
+                    <div className="relative flex flex-col gap-8 lg:col-span-2">
                         <div>
                             <span className="text-primary text-[10px] md:text-[11px] font-bold tracking-[0.3em] uppercase block mb-4">
                                 Personal Commitment
