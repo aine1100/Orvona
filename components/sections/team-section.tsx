@@ -79,7 +79,7 @@ const teamMembers: TeamMember[] = [
     id: 11,
     name: "Fuk Sang Chan",
     role: "Administrative Assistant",
-    image: "/linda.png",
+    image: "/fuk sang chan.png",
   },
 ];
 

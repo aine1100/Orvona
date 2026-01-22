@@ -26,7 +26,7 @@ const teamMembers: TeamMember[] = [
     { id: 8, name: "Julie Margetich", role: "Architect", image: "/Julie Margetich.png" },
     { id: 9, name: "Michael Robert", role: "Architect", image: "/Michael_Robert.png" },
     { id: 10, name: "James Mellor", role: "Architect", image: "/James Mellor.png" },
-    { id: 11, name: "Fuk Sang Chan", role: "Administrative Assistant", image: "/linda.png" },
+    { id: 11, name: "Fuk Sang Chan", role: "Administrative Assistant", image: "/fuk sang chan.png" },
 ];
 
 export default function TeamPage() {

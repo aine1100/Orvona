@@ -21,44 +21,42 @@ export default function FounderSection() {
                 <SectionHeader title="Founder." letter="F" />
 
                 {/* Content Grid - Image takes more space on large screens */}
-                <div className="grid w-full lg:grid-cols-5 gap-12 lg:gap-16 items-stretch">
+                <div className="grid w-full lg:grid-cols-5 gap-12 lg:gap-16 items-start">
 
-                    {/* Left: Image - Takes 3 columns on large screens */}
-                    <div className="relative min-h-[500px] w-full lg:col-span-3 lg:min-h-[600px] rounded-sm overflow-hidden border border-white/5 shadow-2xl group">
+                    {/* Left: Image - Takes 3 columns and set to 3/2 aspect ratio for rectangular look */}
+                    <div className="relative w-full lg:col-span-3 aspect-[3/2] rounded-sm overflow-hidden border border-white/5 shadow-2xl group">
                         <Image
                             src="/spink.png"
                             alt="Founder of K&C Design"
                             fill
-                            className="object-fit transition-transform duration-700 group-hover:scale-105"
+                            className="object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
                     </div>
 
                     {/* Right: Content - Takes 2 columns on large screens */}
-                    <div className="relative flex flex-col gap-8 lg:col-span-2">
+                    <div className="relative flex flex-col gap-4 lg:col-span-2 h-full justify-between py-1">
                         <div>
-                            <span className="text-primary text-[10px] md:text-[11px] font-bold tracking-[0.3em] uppercase block mb-4">
+                            <span className="text-primary text-[10px] md:text-[11px] font-bold tracking-[0.3em] uppercase block mb-2">
                                 Personal Commitment
                             </span>
-                            <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium text-white leading-tight uppercase">
+                            <h2 className="text-2xl md:text-3xl lg:text-3xl font-medium text-white leading-tight uppercase">
                                 Designing Your Vision <br /> with K&C Design
                             </h2>
                         </div>
 
                         {/* Description */}
-                        <div className="flex flex-col gap-6 text-white/50 text-[15px] leading-relaxed italic border-l-2 border-primary/30 pl-8 py-2">
+                        <div className="flex flex-col gap-4 text-white/50 text-[13px] md:text-[14px] leading-relaxed italic border-l-2 border-primary/30 pl-6 py-1">
                             <p>
                                 “At K&C Design, our mission is simple: to provide integrated, high-quality design and engineering solutions that bring our clients’ visions to life. From architecture and civil engineering to MEP, fire protection, interior design, and landscape architecture, we coordinate every aspect of your project under one roof to ensure clarity, efficiency, and exceptional results."
                             </p>
                             <p>
-                                "Whether it’s a new building, a renovation, or an expansion, our team works closely with you through every phase—from concept and permitting to construction and completion. We don’t just design buildings—we create spaces that inspire, perform, and stand the test of time.”
+                                "Whether it’s a new building, a renovation, or an expansion, our team works closely with you through every phase—from concept and permitting to construction and completion."
                             </p>
                         </div>
 
-                        {/* Core Values List */}
-
                         {/* Signature */}
-                        <div className="pt-8 border-t border-white/10 flex items-center justify-between">
+                        <div className="pt-4 border-t border-white/10 flex items-center justify-between">
                             <div>
                                 <h4 className="text-white font-medium text-lg tracking-tight">Chad Spink</h4>
                                 <p className="text-[10px] text-white/30 uppercase tracking-[0.2em] mt-1">Owner, K&C Design</p>
